@@ -28,7 +28,7 @@ $s5templatename = $this->template;
 
 
 	<style>
-	body {font-family: '<?php echo $s5_fonts;?>',Helvetica,Arial,Sans-Serif ;} 
+	body {font-family: 'Roboto', sans-serif;} 
 	</style>
 </head>
 <body>

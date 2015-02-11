@@ -161,11 +161,11 @@ width:93% !important;
 	-pie-background: <?php if ($s5_responsive_mobile_bar_static == "enabled") { ?>url(<?php echo $s5_directory_path ?>/images/vertex/responsive/mobile_static_<?php echo $s5_responsive_mobile_bar_style; ?>.png), <?php } ?>linear-gradient(top, #<?php echo $s5_responsive_mobile_bar_start; ?> 0%,#<?php echo $s5_responsive_mobile_bar_stop; ?> 100%); /* IE8 */
 	behavior: url(<?php echo $s5_directory_path ?>/css/PIE.htc);
 	<?php } ?>
-	font-family: <?php echo $s5_fonts_responsive_mobile_bar ?> !important;
+	font-family: 'Roboto', sans-serif <?php //echo $s5_fonts_responsive_mobile_bar ?> !important;
 	}
 	
 	.s5_responsive_mobile_drop_down_inner, .s5_responsive_mobile_drop_down_inner input, .s5_responsive_mobile_drop_down_inner button, .s5_responsive_mobile_drop_down_inner .button, #s5_responsive_mobile_drop_down_search .validate {
-	font-family: <?php echo $s5_fonts_responsive_mobile_bar ?> !important;
+	font-family: 'Roboto', sans-serif <?php //echo $s5_fonts_responsive_mobile_bar ?> !important;
 	}
 	
 	.s5_responsive_mobile_drop_down_inner button:hover, .s5_responsive_mobile_drop_down_inner .button:hover {
@@ -173,7 +173,7 @@ width:93% !important;
 	}
 	
 	#s5_responsive_mobile_drop_down_menu, #s5_responsive_mobile_drop_down_menu a, #s5_responsive_mobile_drop_down_login a {
-	font-family: <?php echo $s5_fonts_responsive_mobile_bar ?> !important;
+	font-family: 'Roboto', sans-serif <?php //echo $s5_fonts_responsive_mobile_bar ?> !important;
 	color:#<?php echo $s5_responsive_mobile_bar_font_color; ?> !important;
 	}
 	

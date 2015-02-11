@@ -19,7 +19,7 @@ display:none;
 }
 	
 .article-info {
-	font-family: "proxima_novaregular", "Century Gothic", Arial, Helvetica, Sans-Serif !important;
+	font-family: 'Roboto', sans-serif !important;
 	font-size: 0.7em;
 	font-style: normal;
 	text-transform: uppercase;

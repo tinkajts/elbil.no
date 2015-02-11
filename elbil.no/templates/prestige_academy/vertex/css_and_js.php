@@ -70,6 +70,8 @@ $doc->addScript($s5_directory_path.'/js/jquery/jquery-noconflict.js');
 <!--link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=<?php echo $s5_fonts_with_style;?>" /-->
 <?php } ?>
 
+<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css' />
+
 <?php if ($s5_multibox  == "yes") { ?>
 <link href="<?php echo $s5_directory_path ?>/css/multibox/multibox.css" rel="stylesheet" type="text/css" />
 <link href="<?php echo $s5_directory_path ?>/css/multibox/ajax.css" rel="stylesheet" type="text/css" />
@@ -78,7 +80,7 @@ $doc->addScript($s5_directory_path.'/js/jquery/jquery-noconflict.js');
 <?php } ?>
 
 
-<link href="<?php echo $s5_directory_path ?>/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+<link rel="icon" type="image/png" href="<?php echo $s5_directory_path ?>/images/web-icon.png" />
 
 <?php if($s5_font_resizer == "yes" && $mobile==false) { ?>
 <script type="text/javascript" src="<?php echo $s5_directory_path ?>/js/s5_font_adjuster.js"></script>

@@ -14,7 +14,7 @@
 
 ul.mostread a, ul.category-module a{
 	margin-top: 0.6em;
-	font-family: 'proxima_novabold' !important;
+	font-family: 'Roboto', sans-serif !important;
 	font-size: 1em;
 	font-weight: normal;
 	line-height: 1.2em;
@@ -198,7 +198,7 @@ figcaption{
 	background-color: #ebebeb;
 	padding: 0.5em 0;
 	text-align: center !important;	
-	font-family: 'proxima_novaregular' !important;
+	font-family: 'Roboto', sans-serif !important;
 	font-size: 1em !important;
 	font-weight: normal;
 	line-height: 1.2em !important;
@@ -361,7 +361,7 @@ min-height: 2014px;
 }
 
 .disqusinfo{
-	font-family: 'proxima_novaregular';
+	font-family: 'Roboto', sans-serif;
 	font-size: 80%;
 	font-weight: normal;
 	line-height: 150%;

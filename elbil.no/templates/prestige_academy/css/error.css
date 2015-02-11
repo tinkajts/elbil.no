@@ -6,7 +6,7 @@
 }
 
 table, td, th, div, pre, blockquote, ul, ol, dl, address,.componentheading,.contentheading,.contentpagetitle,.sectiontableheader,.newsfeedheading {
-	font-family: helvetica, arial, sans-serif;
+	font-family: 'Roboto', sans-serif;
 	font-weight: normal;
 }
 

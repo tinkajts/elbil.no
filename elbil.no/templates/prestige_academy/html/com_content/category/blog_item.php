@@ -32,7 +32,7 @@ JHtml::_('behavior.tooltip');
 					echo 'class="caption"'.' title="' .htmlspecialchars($images->image_intro_caption) .'"';
 				endif; ?>
 				src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>"/>
-			<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+			<img src="/images/arrow-for-blog-pictures.png" class="gronnpil" width="88px" height="66px"/>
 		</a>
 		
 	</div>

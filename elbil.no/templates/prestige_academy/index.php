@@ -40,14 +40,14 @@ require("vertex/includes/vertex_includes_header.php");
  
 
 #s5_nav li a,.S5_submenu_item a{
-font-family: 'neo_sansmedium','Century Gothic', Arial, Helvetica, Sans-Serif;
+font-family: 'Roboto', sans-serif;
 text-transform:uppercase;
 font-size: 1.1em;
 line-height: 0.8em;
 }
 
 li.s5_am_inner_li ul.s5_am_innermenu span.s5_accordion_menu_left a.mainlevel {
-font-family: 'neo_sansregular','Century Gothic', Arial, Helvetica, Sans-Serif;
+font-family: 'Roboto', sans-serif;
 text-transform:uppercase;
 font-size: 13pt;
 line-height: 18pt;
@@ -124,7 +124,7 @@ position:relative;
 <?php if($s5_thirdparty == "enabled") { ?>
 /* k2 stuff */
 div.itemHeader h2.itemTitle, div.catItemHeader h3.catItemTitle, h3.userItemTitle a, #comments-form p, #comments-report-form p, #comments-form span, #comments-form .counter, #comments .comment-author, #comments .author-homepage,
-#comments-form p, #comments-form #comments-form-buttons, #comments-form #comments-form-error, #comments-form #comments-form-captcha-holder {font-family: '<?php echo $s5_fonts;?>',Helvetica,Arial,Sans-Serif ;} 
+#comments-form p, #comments-form #comments-form-buttons, #comments-form #comments-form-error, #comments-form #comments-form-captcha-holder {font-family: 'Roboto', sans-serif;} 
 <?php } ?>	
 .s5_wrap{width:<?php echo $s5_body_width; echo $s5_fixed_fluid ?>;}	
 </style>

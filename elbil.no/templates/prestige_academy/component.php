@@ -27,7 +27,7 @@ $s5templatename = $this->template;
 <style>
 a, h1, h2, h3, h4, h5 {
 color:#000000;}
-body {font-family: '<?php echo $s5_fonts;?>',Helvetica,Arial,Sans-Serif ;} 
+body {font-family: 'Roboto', sans-serif;} 
 </style>
 </head>
 <body class="contentpane">
