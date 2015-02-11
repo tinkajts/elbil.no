@@ -1,0 +1,424 @@
+/**
+ * @package		Zen Tools
+ * @subpackage	Zen Tools
+ * @author		Joomla Bamboo - design@joomlabamboo.com
+ * @copyright 	Copyright (c) 2013 Joomla Bamboo. All rights reserved.
+ * @license		GNU General Public License version 2 or later
+ * @version		1.11.5
+ */
+
+/* Slideshow
+-----------------------------------------------------------------------------*/
+.zentools.slideshow li {
+margin:0
+}
+
+.zentools.slideshow ul.slidenav li {margin: 0 10px 0 0}
+
+.zenrelative {
+position: relative;z-index: 1;
+}
+
+.zentools.slideshow {
+clear:both;
+float:left;
+width:100%
+}
+
+
+/* Reset for Zencenter rule applied via framework
+-----------------------------------------------------------------------------*/
+.zentools .zencenter,
+.zentools .zenright {
+	text-align: left
+}
+
+
+
+/* Slideshow Nav
+-----------------------------------------------------------------------------*/
+.zentools .slide-controller ul.slidenav.zencenter {
+text-align: center;margin-top: 5px;
+}
+
+
+
+.zentools .slide-controller ul.slidenav.zencenter li,
+.zentools .slide-controller.zencenter ul.slidenav li.flex-active{
+	display:inline;float: none;
+	padding:0 7px 0 7px
+}
+
+.zentools .slide-controller ul.slidenav.zencenter li span {
+display: inline-block;padding: 0;
+}
+
+
+.zentools .slide-controller ul.slidenav.zenright {
+float: right
+}
+
+
+
+.zentools .slide-controller ul.slidenav.zenright li {
+display: inline !important
+}
+
+
+.zentools .slidenavdiscs {
+text-align: center;float: left;width: 100%;padding: 8px 0;
+}
+
+
+.zentools .slide-controller {
+margin-top: 0px;overflow: hidden;width: 100%;
+}
+
+.zentools .slide-controller.zenpadding {
+padding: 10px 0 0
+}
+
+.zentools.slideshow ul.flex-direction-nav {
+width: 50px;margin-top:0px;
+}
+
+.zentools .slide-controller {
+margin: 0;padding-bottom: 10px;
+}
+
+
+.zentools ul.slidenav li img {
+	margin-bottom: 10px;
+}
+
+.zentools .slide-controller.none {
+	display: none
+}
+
+
+
+
+
+/* Slideshow Nav - Numbers
+-----------------------------------------------------------------------------*/
+.zentools .slidenavnumbers ul.zenleft li {
+float: left;
+padding: 0 !important;
+}
+
+.zentools .slidenavnumbers ul.zenright li {
+padding: 0 !important;
+}
+.zentools .slidenavnumbers ul.zenleft li span,
+.zentools .slidenavdiscs ul.zenleft li span,
+.zentools .slidenavnumbers ul.zencenter li span,
+.zentools .slidenavnumbers ul.zenright li span {
+float: left;
+background:#eee;
+border-radius:4px;
+cursor:pointer;
+margin-bottom:12px;
+padding:4px 8px
+}
+
+.zentools .slidenavnumbers ul li.flex-active span,
+.zentools .slidenavnumbers ul.zencenter li.flex-active span {
+background:#999;
+color:#fff
+}
+
+.zentools .slidenavnumbers ul.zencenter li span,
+.zentools .slidenavnumbers ul.zenright li span {
+cursor: pointer;padding: 4px 6px !important;border-radius:4px;
+float: none;margin-right: 0;
+}
+
+.zentools .slidenavnumbers ul.zencenter li {
+padding: 0 !important;
+}
+
+.zentools .slidenavthumb ul.zenright {
+float: right !important
+}
+
+/* Slideshow Nav - Discs
+-----------------------------------------------------------------------------*/
+.zentools .slidenavdiscs ul li {
+background:url(../../images/slideshow/nav.png) 0 0 no-repeat;
+display:block;
+text-indent:-9999em;
+float: left;
+padding: 8px !important;
+margin:0
+}
+
+.zentools .slidenavdiscs ul li.flex-active {
+background:url(../../images/slideshow/nav.png) 0 -79px no-repeat;
+display:block;float: left;
+text-indent:-9999em;
+
+}
+
+.zentools .slidenavdiscs ul li span {
+display: none;
+}
+
+
+
+/* Slideshow Nav - Thumb
+-----------------------------------------------------------------------------*/
+
+.zentools .slidenavthumb ul li {
+margin-bottom:12px;
+margin-right:10px;
+cursor:pointer
+}
+
+.zentools .slidenavthumb ul.zenleft li
+{
+float: left;padding: 0;
+}
+
+.zentools .slidenavthumb ul.zencenter li
+{
+margin: 0;padding: 0 !important;
+}
+
+
+/* Slideshow Count
+-----------------------------------------------------------------------------*/
+.zentools .slidecount{float: right;text-align: right;;;margin-top: 0px;height: 20px;font-size: 90%;display: none;}
+
+
+
+
+/* Flexislider CSS
+-----------------------------------------------------------------------------*/
+
+/* Browser Resets */
+.zentools .flex-container a:active,
+.zentools .flexslider a:active {
+outline:none
+}
+
+.zentools .slides,
+.zentools .flex-control-nav,
+.zentools .flex-direction-nav {
+list-style:none;
+margin:0;
+padding:0
+}
+
+/* FlexSlider Necessary Styles
+*********************************/
+.zentools.flexslider {
+width:100%;
+margin:0;
+padding:0
+}
+
+.zentools.flexslider .slides > li {
+display:none;
+position:relative
+}
+
+/* Hide the slides before the JS is loaded. Avoids image jumping */
+.zentools.flexslider .slides img {
+max-width:100%;
+display:block;
+margin:0 0 30px
+}
+
+
+.zentools .flex-pauseplay {
+float:left;margin-top: 5px;
+}
+
+.zentools .flex-pauseplay span {
+padding: 5px 10px;
+z-index:11;
+text-align: center;
+border-radius:3px;
+border: 1px solid #DDD;
+text-transform:uppercase;
+cursor:pointer;
+font-size:85%;
+text-align:right;
+clear:both
+}
+
+.zentools .flex-pauseplay a.flex-play span{
+text-shadow: 0 1px 1px white;
+background: -webkit-linear-gradient(top, white, #E0E0E0);
+background:    -moz-linear-gradient(top, white, #E0E0E0);
+background:     -ms-linear-gradient(top, white, #E0E0E0);
+background:      -o-linear-gradient(top, white, #E0E0E0);
+font-weight: bold;
+font-size:80%;
+}
+
+.zentools.flexslider .flex-pauseplay a.flex-pause span,
+.zentools ul.flex-direction-nav li a{
+border: 1px solid #ccc;
+-webkit-box-shadow: inset 0 1px 2px #eee;
+-moz-box-shadow:    inset 0 1px 2px #eee;
+box-shadow:         inset 0 1px 2px #fff;
+background: -webkit-linear-gradient(top, #fff, gainsboro);
+background:    -moz-linear-gradient(top, #fff, gainsboro);
+background:     -ms-linear-gradient(top, #fff, gainsboro);
+background:      -o-linear-gradient(top, #fff, gainsboro);
+font-size:80%;
+}
+
+
+/* Clearfix for the .slides element */
+.zentools .slides:after {
+content:".";
+display:block;
+clear:both;
+visibility:hidden;
+line-height:0;
+height:0
+}
+
+html[xmlns] .zentools .slides {
+display:block
+}
+
+* html .zentools .slides {
+height:1%
+}
+
+/* No JavaScript Fallback
+ If you are not using another script, such as Modernizr, make sure you
+ * include js that eliminates this class on page load */
+.no-js .zentools .slides > li:first-child {
+display:block
+}
+
+/* FlexSlider Default Theme
+*********************************/
+
+/* Suggested container for "Slide" animation setups. Can replace this with your own, if you wish */
+.zentools .flex-container {
+zoom:1px;
+position:relative
+}
+
+/* Caption style
+ IE rgba() hack */
+.zentools .flex-caption {
+background:none;
+-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endColorstr=#4C000000);
+zoom:1px
+}
+
+/* Direction Nav */
+.zentools .slide-controller .flex-direction-nav {
+float: left;margin-top: 20px;
+}
+
+
+.zentools .flex-direction-nav li a span {
+width:15px;
+height:20px;
+display:block;
+background:url(../../images/slideshow/bg_direction_nav.png) no-repeat 0 -18px;
+cursor:pointer;
+text-indent:-9999px;
+z-index:10;
+float:left;
+
+}
+
+.zentools ul.flex-direction-nav li a {
+float: left;padding: 4px 4px 4px 1px;width: 14px;border-radius:3px;height: 13px;margin-right: 4px;
+}
+
+
+.zentools .flex-direction-nav li a:active,
+.zentools .flex-direction-nav li a:focus {
+top:auto
+}
+
+.zentools .flex-direction-nav li .next span{
+background-position:-92px -18px !important;
+margin-left:4px
+}
+
+.zentools .flex-direction-nav li .disabled {
+opacity:.3;
+filter:alpha(opacity=30);
+cursor:default
+}
+
+/* Control Nav */
+.zentools .flex-control-nav {
+text-align:center;
+z-index:11;
+position:relative;
+clear:both
+}
+
+.zentools .flex-control-nav li {
+zoom:1px;
+display:inline;
+margin:0 0 0 5px
+}
+
+.zentools .flex-control-nav li:first-child {
+margin:0
+}
+
+.zentools .flex-control-nav li a {
+width:13px;
+height:13px;
+display:block;
+background:url(../images/slideshow/bg_control_nav.png) no-repeat 0 0;
+cursor:pointer;
+text-indent:-9999px
+}
+
+.zentools .flex-control-nav li a:hover {
+background-position:0 -13px
+}
+
+.zentools .flex-control-nav li a.active {
+background-position:0 -26px;
+cursor:default
+}
+
+
+.slideshow.zenpagination {
+position: relative;
+}
+.slideshow.zenpagination .slide-controller {
+position: absolute;right: 0;top: -12px;
+}
+
+.slideshow.zenpagination .slide-controller li {
+list-style-type: none;
+}
+
+
+/* Slideshow Pagination - none
+-----------------------------------------------------------------------------*/
+.slidenavnone ul.slidenav {
+display: none;
+}
+
+.zentools .slide-controller i {
+	display: none;
+}
+
+.zentools .flex-viewport {
+	float: left;
+	width: 100%;
+}
+
+
+.zentools.slideshow li {
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}

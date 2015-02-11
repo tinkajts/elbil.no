@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="1.6" type="plugin" group="content">
+	<name>Content - Facebook Like And Recommend</name>
+	<author>Leon W.</author>
+	<creationDate>19 March 2011</creationDate>
+	<copyright>Copyright (C) 2011 CMSVoteUp.com. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>support@cmsvoteup.com</authorEmail>
+	<authorUrl>cmsvoteup.com</authorUrl>
+	<version>1.0</version>
+    <description>Facebook Like And Recommend Joomla Plugin enable Facebook Like button on your published articles, with feature to include and exclude certain articles and categories to give you more flexiblities. With Facebook Like Button plugin, let a user share your content with friends on Facebook. When the user clicks the Like button on your site, a story appears in the user's friends' News Feed with a link back to your website. You can enable show faces and comment, change fonts with this plugin.</description>
+	<files>
+		<filename>index.html</filename>
+		<filename plugin="facebooklikeandrecommend">facebooklikeandrecommend.php</filename>        
+	</files>	
+  <config>
+    <fields name="params">
+		 <fieldset name="basic">
+	   	    <field name="@spacer" type="spacer" default="General Setting For Button Position" label="&lt;&lt;&lt; General Setting For Button Position &gt;&gt;&gt;" description="General Setting For Button Position" />
+    		<field name="content_tobe_excluded" type="text" default="" label="Excluded Content" description="Type in Content (Article) Id to be excluded with comma"/>
+			<field name="category_tobe_excluded" type="text" default="" label="Excluded Categories" description="Type in Categories Id to be excluded with comma"/>
+			<field name="position" type="radio" default="2" label="Position to show buttons">
+				   <option value="1">Before Content</option>
+				   <option value="2">After Content</option>
+				   <option value="3">Both</option>
+			  </field>
+			<field name="@spacer1" type="spacer" default="Setting For Facebook Like &amp; Recommend Button" label="Setting For Facebook Like &amp; Recommend Button" description="Setting For Facebook Like &amp; Recommend Button" />
+			<field name="layout_style" type="list" default="button_count" label="Style" description="Style of the button to be displayed">
+				<option value="standard">standard</option>
+				<option value="button_count">button_count</option>
+				<option value="box_count">box_count</option>
+			</field>
+			<field name="show_faces" type="list" default="yes" label="Show Faces" description="Show Faces">
+				<option value="true">yes</option>
+				<option value="false">no</option>					
+			</field>
+			<field name="width" type="text" default="450" label="Width" description="The width of this plugin, in pixels"/>
+			<field name="verb_to_display" type="radio" default="1" label="Verb to Display" description="Verb to Display">
+				<option value="1">like</option>
+				<option value="0">recommend</option>
+			</field>
+			<field name="font" type="list" default="arial" label="Font" description="The font of the plugin">
+				<option value="arial">arial</option>
+				<option value="lucida grande">lucida grande</option>
+				<option value="segoe ui">segoe ui</option>
+				<option value="tahoma">tahoma</option>
+				<option value="trebuchet ms">trebuchet ms</option>
+				<option value="verdana">verdana</option>		
+			</field>
+			<field name="color_scheme" type="list" default="light" label="Color Scheme" description="Color Scheme">
+				<option value="light">light</option>
+				<option value="dark">dark</option>					
+			</field>
+			<field name="credit_to_Author" type="list" default="1" label="Credit Author (Hidden Link)" description="Credit Author (Hidden Power By)">
+				<option value="1">yes</option>
+				<option value="0">no</option>					
+			</field>
+		</fieldset>
+   </fields>
+  </config>
+</extension>

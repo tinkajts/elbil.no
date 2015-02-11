@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5.0" type="plugin" group="content" method="upgrade">
+	<name>PLG_CONTENT_SETIMAGES</name>
+	<author>Helios Ciancio</author>
+	<creationDate>September 2013</creationDate>
+	<copyright>(C) 2013, Helios Ciancio. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-3.0.html GNU/GPL v3</license>
+	<authorEmail>info@eshiol.it</authorEmail>
+	<authorUrl>www.eshiol.it</authorUrl>
+	<version>3.0.8</version>
+	<description>PLG_CONTENT_SETIMAGES_XML_DESCRIPTION</description>
+	<files>
+		<filename plugin="setimages">setimages.php</filename>
+		<filename>index.html</filename>
+	</files>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_content_setimages.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_content_setimages.sys.ini</language>
+		<language tag="it-IT">it-IT/it-IT.plg_content_setimages.ini</language>
+		<language tag="it-IT">it-IT/it-IT.plg_content_setimages.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="image_intro"
+					type="list"
+					label="PLG_CONTENT_SETIMAGES_FIELD_INTRO_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FIELD_INTRO_DESC" >
+						<option value="">JNONE</option>
+						<option value="1">PLG_CONTENT_SETIMAGES_1ST_INTRO</option>
+				</field>
+				<field
+					name="float_intro"
+					type="list"
+					label="PLG_CONTENT_SETIMAGES_FLOAT_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FLOAT_DESC">
+						<option value="">JGLOBAL_USE_GLOBAL</option>
+						<option value="right">PLG_CONTENT_SETIMAGES_RIGHT</option>
+						<option value="left">PLG_CONTENT_SETIMAGES_LEFT</option>
+						<option value="none">PLG_CONTENT_SETIMAGES_NONE</option>
+				</field>
+				<field name="image_intro_alt"
+					class="btn-group"
+					type="radio"
+					label="PLG_CONTENT_SETIMAGES_FIELD_IMAGE_ALT_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FIELD_IMAGE_ALT_DESC">
+						<option value="">JNO</option>
+						<option value="1">JYES</option>
+				</field>
+				<field name="image_intro_caption"
+					class="btn-group"
+					type="radio"
+					label="PLG_CONTENT_SETIMAGES_FIELD_IMAGE_CAPTION_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FIELD_IMAGE_CAPTION_DESC">
+						<option value="">JNO</option>
+						<option value="1">JYES</option>
+				</field>
+				<field
+					name="spacer1"
+					type="spacer"
+					hr="true"
+					/>
+				<field
+					name="image_fulltext"
+					type="list"
+					label="PLG_CONTENT_SETIMAGES_FIELD_FULL_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FIELD_FULL_DESC">
+						<option value="">JNONE</option>
+						<option value="1">PLG_CONTENT_SETIMAGES_1ST_INTRO</option>
+						<option value="2">PLG_CONTENT_SETIMAGES_1ST_FULL_OR_INTRO</option>
+						<option value="3">PLG_CONTENT_SETIMAGES_1ST_FULL</option>
+				</field>
+				<field
+					name="float_fulltext"
+					type="list"
+					label="PLG_CONTENT_SETIMAGES_FLOAT_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FLOAT_DESC">
+						<option value="">JGLOBAL_USE_GLOBAL</option>
+						<option value="right">PLG_CONTENT_SETIMAGES_RIGHT</option>
+						<option value="left">PLG_CONTENT_SETIMAGES_LEFT</option>
+						<option value="none">PLG_CONTENT_SETIMAGES_NONE</option>
+				</field>
+				<field name="image_fulltext_alt"
+					class="btn-group"
+					type="radio"
+					label="PLG_CONTENT_SETIMAGES_FIELD_IMAGE_ALT_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FIELD_IMAGE_ALT_DESC">
+						<option value="">JNO</option>
+						<option value="1">JYES</option>
+				</field>
+				<field name="image_fulltext_caption"
+					class="btn-group"
+					type="radio"
+					label="PLG_CONTENT_SETIMAGES_FIELD_IMAGE_CAPTION_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FIELD_IMAGE_CAPTION_DESC">
+						<option value="">JNO</option>
+						<option value="1">JYES</option>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="embedded"
+					type="list"
+					default="0"
+					label="PLG_CONTENT_SETIMAGES_FIELD_EMBEDDED_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FIELD_EMBEDDED_DESC" >
+						<option value="0">PLG_CONTENT_SETIMAGES_EMBEDDED_NONE</option>
+						<option value="1">PLG_CONTENT_SETIMAGES_EMBEDDED_IMPORT</option>
+						<option value="2">PLG_CONTENT_SETIMAGES_EMBEDDED_REMOVE</option>
+				</field>
+				<field
+					name="external"
+					type="list"
+					default="0"
+					label="PLG_CONTENT_SETIMAGES_FIELD_EXTERNAL_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FIELD_EXTERNAL_DESC" >
+						<option value="0">PLG_CONTENT_SETIMAGES_EXTERNAL_NONE</option>
+						<option value="1">PLG_CONTENT_SETIMAGES_EXTERNAL_IMPORT</option>
+						<option value="2">PLG_CONTENT_SETIMAGES_EXTERNAL_REMOVE</option>
+				</field>
+				<field name="folder" type="folderlist" default="j2xml" 
+					label="PLG_CONTENT_SETIMAGES_IMAGES_FOLDER_LABEL"
+					description="PLG_CONTENT_SETIMAGES_IMAGES_FOLDER_DESC"
+					directory="images" filter="" exclude="" stripext="" hide_none="true" />
+				<field
+					name="spacer2"
+					type="spacer"
+					hr="true"
+					/>
+				<field
+					name="context"
+					type="list"
+					label="PLG_CONTENT_SETIMAGES_FIELD_CONTEXT_LABEL"
+					description="PLG_CONTENT_SETIMAGES_FIELD_CONTEXT_DESC" >
+						<option value="">PLG_CONTENT_SETIMAGES_CONTEXT_J2XML</option>
+						<option value="1">PLG_CONTENT_SETIMAGES_CONTEXT_JOOMLA</option>
+						<option value="2">PLG_CONTENT_SETIMAGES_CONTEXT_ALL</option>
+				</field>				
+			</fieldset>
+		</fields>
+	</config>
+ </extension>

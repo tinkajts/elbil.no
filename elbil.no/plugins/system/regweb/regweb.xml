@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="system" version="2.5.0" method="upgrade">
+	<name>PLG_SYSTEM_REGWEB</name>
+	<creationDate>October 2013</creationDate>
+	<author>Regweb</author>
+	<authorEmail>post@regweb.no</authorEmail>
+	<authorUrl>http://www.regweb.no</authorUrl>
+	<copyright>(c) Regweb. All rights reserved.</copyright>
+	<license>Apache 2.0</license>
+	<version>0.0.1</version>
+	<description>PLG_SYSTEM_REGWEB_XML_DESCRIPTION</description>
+	
+	<files folder="plugin">
+		<filename plugin="regweb">regweb.php</filename>
+		<filename>index.html</filename>
+	</files>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_regweb.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_regweb.sys.ini</language>
+		<language tag="nb-NO">nb-NO/nb-NO.plg_system_regweb.ini</language>
+		<language tag="nb-NO">nb-NO/nb-NO.plg_system_regweb.sys.ini</language>
+	</languages>
+	
+	<config>
+		<fields name="params">
+			<fieldset name="login_redirect" label="PLG_SYSTEM_REGWEB_LOGIN_FIELDSET_LABEL">
+				<field 	name="login_option" type="text"
+						default="com_regweb"
+						required="true"
+						label="PLG_SYSTEM_REGWEB_LOGIN_OPTION_LABEL"
+						description="PLG_SYSTEM_REGWEB_LOGIN_OPTION_DESCRIPTION" />
+				
+				<field 	name="login_view" type="text"
+						default="login"
+						required="false"
+						label="PLG_SYSTEM_REGWEB_LOGIN_VIEW_LABEL"
+						description="PLG_SYSTEM_REGWEB_LOGIN_VIEW_DESCRIPTION" />
+			</fieldset>
+		</fields>
+	</config>
+	
+</extension>

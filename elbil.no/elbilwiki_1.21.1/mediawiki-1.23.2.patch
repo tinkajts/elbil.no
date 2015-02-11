@@ -1,0 +1,285 @@
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/includes/api/ApiFormatJson.php mediawiki-1.23.2/includes/api/ApiFormatJson.php
+--- mediawiki-1.23.1/includes/api/ApiFormatJson.php	2014-07-30 19:29:14.607134692 +0000
++++ mediawiki-1.23.2/includes/api/ApiFormatJson.php	2014-07-30 19:24:42.076519429 +0000
+@@ -66,7 +66,9 @@
+ 		$callback = $params['callback'];
+ 		if ( $callback !== null ) {
+ 			$callback = preg_replace( "/[^][.\\'\\\"_A-Za-z0-9]/", '', $callback );
+-			$this->printText( "$callback($json)" );
++			# Prepend a comment to try to avoid attacks against content
++			# sniffers, such as bug 68187.
++			$this->printText( "/**/$callback($json)" );
+ 		} else {
+ 			$this->printText( $json );
+ 		}
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/includes/db/DatabasePostgres.php mediawiki-1.23.2/includes/db/DatabasePostgres.php
+--- mediawiki-1.23.1/includes/db/DatabasePostgres.php	2014-07-30 19:29:14.635134961 +0000
++++ mediawiki-1.23.2/includes/db/DatabasePostgres.php	2014-07-30 19:24:42.108519735 +0000
+@@ -826,6 +826,8 @@
+ 	 * In Postgres when using FOR UPDATE, only the main table and tables that are inner joined
+ 	 * can be locked. That means tables in an outer join cannot be FOR UPDATE locked. Trying to do
+ 	 * so causes a DB error. This wrapper checks which tables can be locked and adjusts it accordingly.
++	 * 
++	 * MySQL uses "ORDER BY NULL" as an optimization hint, but that syntax is illegal in PostgreSQL.
+ 	 */
+ 	function selectSQLText( $table, $vars, $conds = '', $fname = __METHOD__,
+ 		$options = array(), $join_conds = array()
+@@ -841,6 +843,10 @@
+ 					}
+ 				}
+ 			}
++
++			if ( isset( $options['ORDER BY'] ) && $options['ORDER BY'] == 'NULL' ) {
++				unset( $options['ORDER BY'] );
++			}
+ 		}
+ 
+ 		return parent::selectSQLText( $table, $vars, $conds, $fname, $options, $join_conds );
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/includes/DefaultSettings.php mediawiki-1.23.2/includes/DefaultSettings.php
+--- mediawiki-1.23.1/includes/DefaultSettings.php	2014-07-30 19:29:14.571134346 +0000
++++ mediawiki-1.23.2/includes/DefaultSettings.php	2014-07-30 19:24:42.008518776 +0000
+@@ -73,7 +73,7 @@
+  * MediaWiki version number
+  * @since 1.2
+  */
+-$wgVersion = '1.23.1';
++$wgVersion = '1.23.2';
+ 
+ /**
+  * Name of the site. It must be changed in LocalSettings.php
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/includes/ImagePage.php mediawiki-1.23.2/includes/ImagePage.php
+--- mediawiki-1.23.1/includes/ImagePage.php	2014-07-30 19:29:14.579134423 +0000
++++ mediawiki-1.23.2/includes/ImagePage.php	2014-07-30 19:24:42.028518969 +0000
+@@ -447,6 +447,8 @@
+ 
+ 					if ( $page > 1 ) {
+ 						$label = $out->parse( wfMessage( 'imgmultipageprev' )->text(), false );
++						// on the client side, this link is generated in ajaxifyPageNavigation()
++						// in the mediawiki.page.image.pagination module
+ 						$link = Linker::linkKnown(
+ 							$this->getTitle(),
+ 							$label,
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/includes/OutputPage.php mediawiki-1.23.2/includes/OutputPage.php
+--- mediawiki-1.23.1/includes/OutputPage.php	2014-07-30 19:29:14.587134499 +0000
++++ mediawiki-1.23.2/includes/OutputPage.php	2014-07-30 19:24:42.032519007 +0000
+@@ -1580,6 +1580,8 @@
+ 		$this->addModuleStyles( $parserOutput->getModuleStyles() );
+ 		$this->addModuleMessages( $parserOutput->getModuleMessages() );
+ 		$this->addJsConfigVars( $parserOutput->getJsConfigVars() );
++		$this->mPreventClickjacking = $this->mPreventClickjacking
++			|| $parserOutput->preventClickjacking();
+ 
+ 		// Template versioning...
+ 		foreach ( (array)$parserOutput->getTemplateIds() as $ns => $dbks ) {
+@@ -1880,6 +1882,16 @@
+ 	}
+ 
+ 	/**
++	 * Get the prevent-clickjacking flag
++	 *
++	 * @since 1.24
++	 * @return boolean
++	 */
++	public function getPreventClickjacking() {
++		return $this->mPreventClickjacking;
++	}
++
++	/**
+ 	 * Get the X-Frame-Options header value (without the name part), or false
+ 	 * if there isn't one. This is used by Skin to determine whether to enable
+ 	 * JavaScript frame-breaking, for clients that don't support X-Frame-Options.
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/includes/parser/ParserOutput.php mediawiki-1.23.2/includes/parser/ParserOutput.php
+--- mediawiki-1.23.1/includes/parser/ParserOutput.php	2014-07-30 19:29:14.735135922 +0000
++++ mediawiki-1.23.2/includes/parser/ParserOutput.php	2014-07-30 19:24:42.268521269 +0000
+@@ -56,6 +56,7 @@
+ 		private $mExtensionData = array(); # extra data used by extensions
+ 		private $mLimitReportData = array(); # Parser limit report data
+ 		private $mParseStartTime = array(); # Timestamps for getTimeSinceStart()
++		private $mPreventClickjacking = false; # Whether to emit X-Frame-Options: DENY
+ 
+ 	const EDITSECTION_REGEX = '#<(?:mw:)?editsection page="(.*?)" section="(.*?)"(?:/>|>(.*?)(</(?:mw:)?editsection>))#';
+ 
+@@ -352,6 +353,7 @@
+ 		$this->addJsConfigVars( $out->getJsConfigVars() );
+ 
+ 		$this->mHeadItems = array_merge( $this->mHeadItems, $out->getHeadItemsArray() );
++		$this->mPreventClickjacking = $this->mPreventClickjacking || $out->getPreventClickjacking();
+ 	}
+ 
+ 	/**
+@@ -660,6 +662,17 @@
+ 	}
+ 
+ 	/**
++	 * Get or set the prevent-clickjacking flag
++	 *
++	 * @since 1.24
++	 * @param boolean|null $flag New flag value, or null to leave it unchanged
++	 * @return boolean Old flag value
++	 */
++	public function preventClickjacking( $flag = null ) {
++		return wfSetVar( $this->mPreventClickjacking, $flag );
++	}
++
++	/**
+ 	 * Save space for for serialization by removing useless values
+ 	 */
+ 	function __sleep() {
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/includes/Preferences.php mediawiki-1.23.2/includes/Preferences.php
+--- mediawiki-1.23.1/includes/Preferences.php	2014-07-30 19:29:14.587134499 +0000
++++ mediawiki-1.23.2/includes/Preferences.php	2014-07-30 19:24:42.048519162 +0000
+@@ -742,7 +742,6 @@
+ 			'type' => 'select',
+ 			'section' => 'rendering/advancedrendering',
+ 			'options' => $stubThresholdOptions,
+-			'size' => 20,
+ 			'label-raw' => $context->msg( 'stub-threshold' )->text(), // Raw HTML message. Yay?
+ 		);
+ 
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/includes/SiteStats.php mediawiki-1.23.2/includes/SiteStats.php
+--- mediawiki-1.23.1/includes/SiteStats.php	2014-07-30 19:29:14.595134576 +0000
++++ mediawiki-1.23.2/includes/SiteStats.php	2014-07-30 19:24:42.052519199 +0000
+@@ -260,7 +260,8 @@
+ 	private $db;
+ 
+ 	// Various stats
+-	private $mEdits, $mArticles, $mPages, $mUsers, $mViews, $mFiles = 0;
++	private $mEdits = null, $mArticles = null, $mPages = null;
++	private $mUsers = null, $mViews = null, $mFiles = null;
+ 
+ 	/**
+ 	 * Constructor
+@@ -389,16 +390,17 @@
+ 	}
+ 
+ 	/**
+-	 * Refresh site_stats.
++	 * Refresh site_stats. If you want ss_total_views to be updated, be sure to
++	 * call views() first.
+ 	 */
+-	protected function refresh() {
++	public function refresh() {
+ 		$values = array(
+ 			'ss_row_id' => 1,
+-			'ss_total_edits' => $this->mEdits,
+-			'ss_good_articles' => $this->mArticles,
+-			'ss_total_pages' => $this->mPages,
+-			'ss_users' => $this->mUsers,
+-			'ss_images' => $this->mFiles,
++			'ss_total_edits' => ( $this->mEdits === null ? $this->edits() : $this->mEdits ),
++			'ss_good_articles' => ( $this->mArticles === null ? $this->articles() : $this->mArticles ),
++			'ss_total_pages' => ( $this->mPages === null ? $this->pages() : $this->mPages ),
++			'ss_users' => ( $this->mUsers === null ? $this->users() : $this->mUsers ),
++			'ss_images' => ( $this->mFiles === null ? $this->files() : $this->mFiles ),
+ 		) + (
+ 			$this->mViews ? array( 'ss_total_views' => $this->mViews ) : array()
+ 		);
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/maintenance/initSiteStats.php mediawiki-1.23.2/maintenance/initSiteStats.php
+--- mediawiki-1.23.1/maintenance/initSiteStats.php	2014-07-30 19:29:15.483143110 +0000
++++ mediawiki-1.23.2/maintenance/initSiteStats.php	2014-07-30 19:24:43.696534959 +0000
+@@ -66,21 +66,19 @@
+ 			$this->output( "{$views}\n" );
+ 		}
+ 
++		if ( $this->hasOption( 'update' ) ) {
++			$this->output( "\nUpdating site statistics..." );
++			$counter->refresh();
++			$this->output( "done.\n" );
++		}
++
+ 		if ( $this->hasOption( 'active' ) ) {
+-			$this->output( "Counting active users..." );
++			$this->output( "\nCounting and updating active users..." );
+ 			$active = SiteStatsUpdate::cacheUpdate( wfGetDB( DB_MASTER ) );
+ 			$this->output( "{$active}\n" );
+ 		}
+ 
+-		$this->output( "\nUpdating site statistics..." );
+-
+-		if ( $this->hasOption( 'update' ) ) {
+-			$counter->update();
+-		} else {
+-			$counter->refresh();
+-		}
+-
+-		$this->output( "done.\n" );
++		$this->output( "\nDone.\n" );
+ 	}
+ }
+ 
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/RELEASE-NOTES-1.23 mediawiki-1.23.2/RELEASE-NOTES-1.23
+--- mediawiki-1.23.1/RELEASE-NOTES-1.23	2014-07-30 19:29:14.559134230 +0000
++++ mediawiki-1.23.2/RELEASE-NOTES-1.23	2014-07-30 19:24:42.000518702 +0000
+@@ -1,6 +1,22 @@
+ Security reminder: MediaWiki does not require PHP's register_globals. If you
+ have it on, turn it '''off''' if you can.
+ 
++== MediaWiki 1.23.2 ==
++
++This is a security and maintenance release of the MediaWiki 1.23 branch.
++
++=== Changes since 1.23.1 ===
++
++* (bug 68187) SECURITY: Prepend jsonp callback with comment.
++* (bug 66608) SECURITY: Fix for XSS issue in bug 66608: Generate the URL used
++  for loading a new page in Javascript,instead of relying on the URL in the link
++  that has been clicked.
++* (bug 65778) SECURITY: Copy prevent-clickjacking between OutputPage and 
++  ParserOutput.
++* (bug 68313) Preferences: Turn stubthreshold back into a combo box.
++* (bug 65214) Fix initSiteStats.php maintenance script.
++* (bug 67594) Special:ActiveUsers: Fix to work with PostgreSQL.
++
+ == MediaWiki 1.23.1 ==
+ 
+ This is a security and maintenance release of the MediaWiki 1.23 branch.
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/resources/Resources.php mediawiki-1.23.2/resources/Resources.php
+--- mediawiki-1.23.1/resources/Resources.php	2014-07-30 19:29:15.511143379 +0000
++++ mediawiki-1.23.2/resources/Resources.php	2014-07-30 19:24:43.712535113 +0000
+@@ -1134,7 +1134,11 @@
+ 	),
+ 	'mediawiki.page.image.pagination' => array(
+ 		'scripts' => 'resources/src/mediawiki.page/mediawiki.page.image.pagination.js',
+-		'dependencies' => array( 'jquery.spinner' )
++		'dependencies' => array(
++			'mediawiki.Uri',
++			'mediawiki.util',
++			'jquery.spinner',
++		)
+ 	),
+ 
+ 	/* MediaWiki Special pages */
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/resources/src/mediawiki.page/mediawiki.page.image.pagination.js mediawiki-1.23.2/resources/src/mediawiki.page/mediawiki.page.image.pagination.js
+--- mediawiki-1.23.1/resources/src/mediawiki.page/mediawiki.page.image.pagination.js	2014-07-30 19:29:15.579144033 +0000
++++ mediawiki-1.23.2/resources/src/mediawiki.page/mediawiki.page.image.pagination.js	2014-07-30 19:24:43.776535728 +0000
+@@ -60,7 +60,16 @@
+ 	function ajaxifyPageNavigation() {
+ 		// Intercept the default action of the links in the thumbnail navigation
+ 		$( '.multipageimagenavbox' ).one( 'click', 'a', function ( e ) {
+-			loadPage( this.href );
++			var page, uri;
++
++			// Generate the same URL on client side as the one generated in ImagePage::openShowImage.
++			// We avoid using the URL in the link directly since it could have been manipulated (bug 66608)
++			page = Number( mw.util.getParamValue( 'page', this.href ) );
++			uri = new mw.Uri( mw.util.wikiScript() )
++				.extend( { title: mw.config.get( 'wgPageName' ), page: page } )
++				.toString();
++
++			loadPage( uri );
+ 			e.preventDefault();
+ 		} );
+ 
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.23.1/tests/phpunit/includes/api/format/ApiFormatJsonTest.php mediawiki-1.23.2/tests/phpunit/includes/api/format/ApiFormatJsonTest.php
+--- mediawiki-1.23.1/tests/phpunit/includes/api/format/ApiFormatJsonTest.php	2014-07-30 19:29:15.619144417 +0000
++++ mediawiki-1.23.2/tests/phpunit/includes/api/format/ApiFormatJsonTest.php	2014-07-30 19:24:41.560514483 +0000
+@@ -14,4 +14,9 @@
+ 		$this->assertInternalType( 'array', json_decode( $data, true ) );
+ 		$this->assertGreaterThan( 0, count( (array)$data ) );
+ 	}
++
++	public function testJsonpInjection( ) {
++		$data = $this->apiRequest( 'json', array( 'action' => 'query', 'meta' => 'siteinfo', 'callback' => 'myCallback' ) );
++		$this->assertEquals( '/**/myCallback(', substr( $data, 0, 15 ) );
++	}
+ }

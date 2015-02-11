@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_REGWEB_VIEW_LOGIN_TITLE">
+		<message>
+			<![CDATA[COM_REGWEB_LOGIN_VIEW_DESC]]>
+		</message>
+	</layout>
+</metadata>

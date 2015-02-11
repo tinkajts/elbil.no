@@ -1,0 +1,35 @@
+#s5_bottom_bar_bg {
+display:none;
+}
+
+.s5_scrolltotop  {	
+margin-top:-28px;
+}
+
+#s5_search_wrap input.button {
+display:none;
+}
+
+#s5_social_search_bar {
+height:43px;
+overflow:hidden;
+}
+
+#s5_search_wrap input {
+padding-top:4px;
+padding-bottom:8px;
+}
+
+#s5_search_wrap input:hover {
+width:180px;
+}
+
+.img-intro-right img, .img-intro-left img, .img-fulltext-right img, .img-fulltext-left img {
+padding:3px !important;
+behavior:none !important;
+}
+
+.custom-row2_large .padded {
+behavior:none !important;
+}
+

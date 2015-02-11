@@ -1,0 +1,52 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "5190050bc664f48922efb33193ea1380",
+    "packages": [
+        {
+            "name": "regweb/regweb-api-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/regweb/regweb-api-php.git",
+                "reference": "22ceabeff0af0793b4a7312761fca490274321d9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/regweb/regweb-api-php/zipball/22ceabeff0af0793b4a7312761fca490274321d9",
+                "reference": "22ceabeff0af0793b4a7312761fca490274321d9",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Regweb\\": "src/"
+                }
+            },
+            "description": "Wrapper around Regwebs REST api",
+            "support": {
+                "source": "https://github.com/regweb/regweb-api-php/tree/master",
+                "issues": "https://github.com/regweb/regweb-api-php/issues"
+            },
+            "time": "2013-11-20 09:27:46"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "regweb/regweb-api-php": 20
+    },
+    "platform": [
+
+    ],
+    "platform-dev": [
+
+    ]
+}

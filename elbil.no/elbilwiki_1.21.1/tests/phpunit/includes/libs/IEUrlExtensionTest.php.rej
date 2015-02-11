@@ -1,0 +1,15 @@
+--- tests/phpunit/includes/libs/IEUrlExtensionTest.php	2013-09-03 11:56:56.868921018 -0700
++++ tests/phpunit/includes/libs/IEUrlExtensionTest.php	2013-09-03 11:56:40.462921178 -0700
+@@ -115,4 +115,12 @@
+ 			'Dot at end of string'
+ 		);
+ 	}
++
++	function testTwoDots() {
++		$this->assertEquals(
++			'z',
++			IEUrlExtension::findIE6Extension( 'x.y.z' ),
++			'Two dots'
++		);
++	}
+ }

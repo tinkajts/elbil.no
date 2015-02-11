@@ -1,0 +1,10 @@
+--- tests/TestsAutoLoader.php	2013-09-03 11:56:56.867921018 -0700
++++ tests/TestsAutoLoader.php	2013-09-03 11:56:40.446921178 -0700
+@@ -47,6 +47,7 @@
+ 
+ 	//db
+ 	'ORMTableTest' => "$testDir/phpunit/includes/db/ORMTableTest.php",
++	'PageORMTableForTesting' => "$testDir/phpunit/includes/db/ORMTableTest.php",
+ 
+ 	//Selenium
+ 	'SeleniumTestConstants' => "$testDir/selenium/SeleniumTestConstants.php",

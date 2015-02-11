@@ -1,0 +1,70 @@
+/**
+* YJ Module Engine CSS
+* @package YJ Module Engine
+* @author Youjoomla.com
+* @website Youjoomla.com * @copyright  Copyright (c) 2007 - 2011 Youjoomla.com.
+* @license   PHP files are GNU/GPL V2 Copyleft CSS / JS / IMAGES are Copyrighted Commercial
+*/
+.accslide_holder_instance {
+	display:block;
+	position:relative;
+	clear:both;
+	margin:0px auto;
+	padding:0px;
+	overflow:hidden;
+}
+.accslide_holder_instance .accslider_instance {
+	display:block;
+	position:relative;
+	clear:both;
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+	float:left;
+	width:9000px;
+	overflow:visible;
+}
+.accslider_instance li.slide {
+	display:block;
+	position:relative;
+	float:left;
+	overflow:hidden;
+	text-align:left;
+	background:none;
+	padding:0;
+	margin:0;
+	z-index:500;
+}
+.accslider_instance li.slide.opened{
+	z-index:300;
+}
+.accslider_instance li.slide div.info {
+	display:block;
+	position:absolute;
+	left:0px;
+	padding:10px 20px;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	font-size:11px;
+	background-image:url(../images/fill.png);
+	color:#CCCCCC;
+}
+.accslider_instance li.slide span.title {
+	display:block;
+	position:relative;
+	font-size:11px;
+	font-weight:bold;
+	color:#CCCCCC;
+	font-family:Verdana, Arial, Helvetica, sans-serif;
+	margin-bottom:10px;
+}
+.accslider_instance li.slide img{
+	max-width:inherit;
+}
+.module_accslider, .moduletable_accslider, .yjsquare_accslider, .yjround_accslider {
+	padding:0;
+}
+.yjsquare_accslider .yjsquare_in,
+.yjsquare._accslider .yjsquare_in {
+	padding:0;
+	margin:0;
+}

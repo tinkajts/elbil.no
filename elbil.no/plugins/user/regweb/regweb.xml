@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="user" version="2.5.0" method="upgrade">
+	<name>PLG_USER_REGWEB</name>
+	<creationDate>October 2013</creationDate>
+	<author>Regweb</author>
+	<authorEmail>post@regweb.no</authorEmail>
+	<authorUrl>http://www.regweb.no</authorUrl>
+	<copyright>(c) Regweb. All rights reserved.</copyright>
+	<license>Apache 2.0</license>
+	<version>0.0.1</version>
+	<description>PLG_USER_REGWEB_XML_DESCRIPTION</description>
+	
+	<files folder="plugin">
+		<filename plugin="regweb">regweb.php</filename>
+		<filename>index.html</filename>
+	</files>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_user_regweb.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_user_regweb.sys.ini</language>
+		<language tag="nb-NO">nb-NO/nb-NO.plg_user_regweb.ini</language>
+		<language tag="nb-NO">nb-NO/nb-NO.plg_user_regweb.sys.ini</language>
+	</languages>
+	
+	<config>
+		<fields name="params">
+			
+			<fieldset name="config_general" label="PLG_USER_REGWEB_CONFIG_GENERAL_FIELDSET">
+				<field 	name="config_profile_title"
+						type="text"
+						label="PLG_USER_REGWEB_CONFIG_PROFILE_TITLE"/>
+				<field 	name="config_profile_infotext"
+						type="editor"
+						label="PLG_USER_REGWEB_CONFIG_PROFILE_INFOTEXT"/>
+				<field 	name="config_profile_form_title"
+						type="text"
+						label="PLG_USER_REGWEB_CONFIG_PROFILE_FORM_TITLE"/>
+			</fieldset>
+			
+			<!-- Member number -->
+			
+			<fieldset name="config_membernumber" label="PLG_USER_REGWEB_CONFIG_MEMBERNUMBER_FIELDSET">
+				<field 	name="config_membernumber_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_membernumber_label"
+						type="text"
+						default="Medlemsnummer"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Firstname -->
+			
+			<fieldset name="config_firstname" label="PLG_USER_REGWEB_CONFIG_FIRSTNAME_FIELDSET">
+				<field 	name="config_firstname_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_firstname_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_firstname_label"
+						type="text"
+						default="Fornavn"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Lastname -->
+			
+			<fieldset name="config_lastname" label="PLG_USER_REGWEB_CONFIG_LASTNAME_FIELDSET">
+				<field 	name="config_lastname_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_lastname_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_lastname_label"
+						type="text"
+						default="Etternavn"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Address1 -->
+			
+			<fieldset name="config_address1" label="PLG_USER_REGWEB_CONFIG_ADDRESS1_FIELDSET">
+				<field 	name="config_address1_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_address1_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_address1_label"
+						type="text"
+						default="Adresse 1"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Address2 -->
+			
+			<fieldset name="config_address2" label="PLG_USER_REGWEB_CONFIG_ADDRESS2_FIELDSET">
+				<field 	name="config_address2_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_address2_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_address2_label"
+						type="text"
+						default="Adresse 2"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Postalcode -->
+			
+			<fieldset name="config_postalcode" label="PLG_USER_REGWEB_CONFIG_POSTALCODE_FIELDSET">
+				<field 	name="config_postalcode_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_postalcode_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_postalcode_label"
+						type="text"
+						default="Postnummer"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Phone 1 -->
+			
+			<fieldset name="config_phone1" label="PLG_USER_REGWEB_CONFIG_PHONE1_FIELDSET">
+				<field 	name="config_phone1_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_phone1_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_phone1_label"
+						type="text"
+						default="Telefon 1"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Phone 2 -->
+			
+			<fieldset name="config_phone2" label="PLG_USER_REGWEB_CONFIG_PHONE2_FIELDSET">
+				<field 	name="config_phone2_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_phone2_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_phone2_label"
+						type="text"
+						default="Telefon 2"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Mobile -->
+			
+			<fieldset name="config_mobile" label="PLG_USER_REGWEB_CONFIG_MOBILE_FIELDSET">
+				<field 	name="config_mobile_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_mobile_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_mobile_label"
+						type="text"
+						default="Mobil"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+
+            <!-- Email -->
+			
+			<fieldset name="config_email" label="PLG_USER_REGWEB_CONFIG_EMAIL_FIELDSET">
+				<field 	name="config_email_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_email_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_email_label"
+						type="text"
+						default="Epost"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+
+            <!-- Birthdate -->
+
+            <fieldset name="config_birthdate" label="PLG_USER_REGWEB_CONFIG_BIRTHDATE_FIELDSET">
+                <field 	name="config_birthdate_show"
+                          type="checkbox"
+                          value="1"
+                          default="0"
+                          label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+                <field 	name="config_birthdate_edit"
+                          type="checkbox"
+                          value="1"
+                          default="0"
+                          label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+                <field 	name="config_birthdate_label"
+                          type="text"
+                          default="Fødselsdato"
+                          label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+            </fieldset>
+			
+			<fieldset name="config_password" label="PLG_USER_REGWEB_CONFIG_PASSWORD_FIELDSET">
+				<field 	name="config_password_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_password_label"
+						type="text"
+						default="Passord"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+				<field 	name="config_password_repeat_label"
+						type="text"
+						default="Gjenta passord"
+						label="PLG_USER_REGWEB_CONFIG_REPEAT_PASS_LABEL"/>
+			</fieldset>
+			
+			<!-- *********************** OPTIONAL FIELDS ********************* -->
+			
+			<!-- Optional textfields -->
+			
+			<fieldset name="config_optional_textfield1" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_TEXTFIELD1_FIELDSET">
+				<field 	name="config_optional_textfield1_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_textfield1_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_textfield1_label"
+						type="text"
+						default="Valgfritt tekstfelt 1"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_textfield2" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_TEXTFIELD2_FIELDSET">
+				<field 	name="config_optional_textfield2_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_textfield2_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_textfield2_label"
+						type="text"
+						default="Valgfritt tekstfelt 2"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_textfield3" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_TEXTFIELD3_FIELDSET">
+				<field 	name="config_optional_textfield3_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_textfield3_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_textfield3_label"
+						type="text"
+						default="Valgfritt tekstfelt 3"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_textfield4" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_TEXTFIELD4_FIELDSET">
+				<field 	name="config_optional_textfield4_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_textfield4_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_textfield4_label"
+						type="text"
+						default="Valgfritt tekstfelt 4"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_textfield5" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_TEXTFIELD5_FIELDSET">
+				<field 	name="config_optional_textfield5_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_textfield5_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_textfield5_label"
+						type="text"
+						default="Valgfritt tekstfelt 5"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_textfield6" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_TEXTFIELD6_FIELDSET">
+				<field 	name="config_optional_textfield6_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_textfield6_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_textfield6_label"
+						type="text"
+						default="Valgfritt tekstfelt 6"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Optional checkboxes -->
+			
+			<fieldset name="config_optional_checkbox1" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_CHECKBOX1_FIELDSET">
+				<field 	name="config_optional_checkbox1_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_checkbox1_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_checkbox1_label"
+						type="text"
+						default="Valgfri sjekkboks 1"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_checkbox2" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_CHECKBOX2_FIELDSET">
+				<field 	name="config_optional_checkbox2_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_checkbox2_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_checkbox2_label"
+						type="text"
+						default="Valgfri sjekkboks 2"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_checkbox3" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_CHECKBOX3_FIELDSET">
+				<field 	name="config_optional_checkbox3_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_checkbox3_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_checkbox3_label"
+						type="text"
+						default="Valgfri sjekkboks 3"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_checkbox4" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_CHECKBOX4_FIELDSET">
+				<field 	name="config_optional_checkbox4_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_checkbox4_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_checkbox4_label"
+						type="text"
+						default="Valgfri sjekkboks 4"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Optional datefields -->
+			
+			<fieldset name="config_optional_date1" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_DATE1_FIELDSET">
+				<field 	name="config_optional_date1_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_date1_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_date1_label"
+						type="text"
+						default="Valgfritt datofelt 1"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_date2" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_DATE2_FIELDSET">
+				<field 	name="config_optional_date2_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_date2_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_date2_label"
+						type="text"
+						default="Valgfritt datofelt 2"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<!-- Optional selects -->
+			
+			<fieldset name="config_optional_select1" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_SELECT1_FIELDSET">
+				<field 	name="config_optional_select1_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_select1_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_select1_label"
+						type="text"
+						default="Valgfri dropdown 1"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_select2" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_SELECT2_FIELDSET">
+				<field 	name="config_optional_select2_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_select2_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_select2_label"
+						type="text"
+						default="Valgfri dropdown 2"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_select3" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_SELECT3_FIELDSET">
+				<field 	name="config_optional_select3_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_select3_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_select3_label"
+						type="text"
+						default="Valgfri dropdown 3"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+			<fieldset name="config_optional_select4" label="PLG_USER_REGWEB_CONFIG_OPTIONAL_SELECT4_FIELDSET">
+				<field 	name="config_optional_select4_show"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_SHOW"/>
+				<field 	name="config_optional_select4_edit"
+						type="checkbox"
+						value="1"
+						default="0"
+						label="PLG_USER_REGWEB_CONFIG_EDIT"/>
+				<field 	name="config_optional_select4_label"
+						type="text"
+						default="Valgfri dropdown 4"
+						label="PLG_USER_REGWEB_CONFIG_LABEL"/>
+			</fieldset>
+			
+		</fields>
+	</config>
+	
+</extension>

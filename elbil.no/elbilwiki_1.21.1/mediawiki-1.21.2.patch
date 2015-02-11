@@ -1,0 +1,519 @@
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/api/ApiBlock.php mediawiki-1.21.2/includes/api/ApiBlock.php
+--- mediawiki-1.21.1/includes/api/ApiBlock.php	2013-09-03 11:56:56.864921018 -0700
++++ mediawiki-1.21.2/includes/api/ApiBlock.php	2013-09-03 11:56:39.672921185 -0700
+@@ -42,12 +42,6 @@
+ 		$user = $this->getUser();
+ 		$params = $this->extractRequestParams();
+ 
+-		if ( $params['gettoken'] ) {
+-			$res['blocktoken'] = $user->getEditToken();
+-			$this->getResult()->addValue( null, $this->getModuleName(), $res );
+-			return;
+-		}
+-
+ 		if ( !$user->isAllowed( 'block' ) ) {
+ 			$this->dieUsageMsg( 'cantblock' );
+ 		}
+@@ -156,10 +150,6 @@
+ 				ApiBase::PARAM_REQUIRED => true
+ 			),
+ 			'token' => null,
+-			'gettoken' => array(
+-				ApiBase::PARAM_DFLT => false,
+-				ApiBase::PARAM_DEPRECATED => true,
+-			),
+ 			'expiry' => 'never',
+ 			'reason' => '',
+ 			'anononly' => false,
+@@ -177,7 +167,6 @@
+ 		return array(
+ 			'user' => 'Username, IP address or IP range you want to block',
+ 			'token' => 'A block token previously obtained through prop=info',
+-			'gettoken' => 'If set, a block token will be returned, and no other action will be taken',
+ 			'expiry' => 'Relative expiry time, e.g. \'5 months\' or \'2 weeks\'. If set to \'infinite\', \'indefinite\' or \'never\', the block will never expire.',
+ 			'reason' => 'Reason for block',
+ 			'anononly' => 'Block anonymous users only (i.e. disable anonymous edits for this IP)',
+@@ -194,10 +183,6 @@
+ 	public function getResultProperties() {
+ 		return array(
+ 			'' => array(
+-				'blocktoken' => array(
+-					ApiBase::PROP_TYPE => 'string',
+-					ApiBase::PROP_NULLABLE => true
+-				),
+ 				'user' => array(
+ 					ApiBase::PROP_TYPE => 'string',
+ 					ApiBase::PROP_NULLABLE => true
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/api/ApiCreateAccount.php mediawiki-1.21.2/includes/api/ApiCreateAccount.php
+--- mediawiki-1.21.1/includes/api/ApiCreateAccount.php	2013-09-03 11:56:56.864921018 -0700
++++ mediawiki-1.21.2/includes/api/ApiCreateAccount.php	2013-09-03 11:56:39.672921185 -0700
+@@ -29,6 +29,10 @@
+  */
+ class ApiCreateAccount extends ApiBase {
+ 	public function execute() {
++		// If we're in JSON callback mode, no tokens can be obtained
++		if ( !is_null( $this->getMain()->getRequest()->getVal( 'callback' ) ) ) {
++			$this->dieUsage( 'Cannot create account when using a callback', 'aborted' );
++		}
+ 
+ 		// $loginForm->addNewaccountInternal will throw exceptions
+ 		// if wiki is read only (already handled by api), user is blocked or does not have rights.
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/api/ApiLogin.php mediawiki-1.21.2/includes/api/ApiLogin.php
+--- mediawiki-1.21.1/includes/api/ApiLogin.php	2013-09-03 11:56:56.864921018 -0700
++++ mediawiki-1.21.2/includes/api/ApiLogin.php	2013-09-03 11:56:39.674921185 -0700
+@@ -46,6 +46,15 @@
+ 	 * is reached. The expiry is $this->mLoginThrottle.
+ 	 */
+ 	public function execute() {
++		// If we're in JSON callback mode, no tokens can be obtained
++		if ( !is_null( $this->getMain()->getRequest()->getVal( 'callback' ) ) ) {
++			$this->getResult()->addValue( null, 'login', array(
++				'result' => 'Aborted',
++				'reason' => 'Cannot log in when using a callback',
++			) );
++			return;
++		}
++
+ 		$params = $this->extractRequestParams();
+ 
+ 		$result = array();
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/api/ApiMain.php mediawiki-1.21.2/includes/api/ApiMain.php
+--- mediawiki-1.21.1/includes/api/ApiMain.php	2013-09-03 11:56:56.864921018 -0700
++++ mediawiki-1.21.2/includes/api/ApiMain.php	2013-09-03 11:56:39.674921185 -0700
+@@ -714,15 +714,9 @@
+ 		}
+ 		$moduleParams = $module->extractRequestParams();
+ 
+-		// Die if token required, but not provided (unless there is a gettoken parameter)
+-		if ( isset( $moduleParams['gettoken'] ) ) {
+-			$gettoken = $moduleParams['gettoken'];
+-		} else {
+-			$gettoken = false;
+-		}
+-
++		// Die if token required, but not provided
+ 		$salt = $module->getTokenSalt();
+-		if ( $salt !== false && !$gettoken ) {
++		if ( $salt !== false ) {
+ 			if ( !isset( $moduleParams['token'] ) ) {
+ 				$this->dieUsageMsg( array( 'missingparam', 'token' ) );
+ 			} else {
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/api/ApiQueryDeletedrevs.php mediawiki-1.21.2/includes/api/ApiQueryDeletedrevs.php
+--- mediawiki-1.21.1/includes/api/ApiQueryDeletedrevs.php	2013-09-03 11:56:56.864921018 -0700
++++ mediawiki-1.21.2/includes/api/ApiQueryDeletedrevs.php	2013-09-03 11:56:39.676921185 -0700
+@@ -57,6 +57,11 @@
+ 		$fld_content = isset( $prop['content'] );
+ 		$fld_token = isset( $prop['token'] );
+ 
++		// If we're in JSON callback mode, no tokens can be obtained
++		if ( !is_null( $this->getMain()->getRequest()->getVal( 'callback' ) ) ) {
++			$fld_token = false;
++		}
++
+ 		$result = $this->getResult();
+ 		$pageSet = $this->getPageSet();
+ 		$titles = $pageSet->getTitles();
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/api/ApiTokens.php mediawiki-1.21.2/includes/api/ApiTokens.php
+--- mediawiki-1.21.1/includes/api/ApiTokens.php	2013-09-03 11:56:56.865921018 -0700
++++ mediawiki-1.21.2/includes/api/ApiTokens.php	2013-09-03 11:56:39.680921185 -0700
+@@ -48,6 +48,11 @@
+ 	}
+ 
+ 	private function getTokenTypes() {
++		// If we're in JSON callback mode, no tokens can be obtained
++		if ( !is_null( $this->getMain()->getRequest()->getVal( 'callback' ) ) ) {
++			return array();
++		}
++
+ 		static $types = null;
+ 		if ( $types ) {
+ 			return $types;
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/api/ApiUnblock.php mediawiki-1.21.2/includes/api/ApiUnblock.php
+--- mediawiki-1.21.1/includes/api/ApiUnblock.php	2013-09-03 11:56:56.865921018 -0700
++++ mediawiki-1.21.2/includes/api/ApiUnblock.php	2013-09-03 11:56:39.680921185 -0700
+@@ -39,12 +39,6 @@
+ 		$user = $this->getUser();
+ 		$params = $this->extractRequestParams();
+ 
+-		if ( $params['gettoken'] ) {
+-			$res['unblocktoken'] = $user->getEditToken();
+-			$this->getResult()->addValue( null, $this->getModuleName(), $res );
+-			return;
+-		}
+-
+ 		if ( is_null( $params['id'] ) && is_null( $params['user'] ) ) {
+ 			$this->dieUsageMsg( 'unblock-notarget' );
+ 		}
+@@ -96,10 +90,6 @@
+ 			),
+ 			'user' => null,
+ 			'token' => null,
+-			'gettoken' => array(
+-				ApiBase::PARAM_DFLT => false,
+-				ApiBase::PARAM_DEPRECATED => true,
+-			),
+ 			'reason' => '',
+ 		);
+ 	}
+@@ -110,7 +100,6 @@
+ 			'id' => "ID of the block you want to unblock (obtained through list=blocks). Cannot be used together with {$p}user",
+ 			'user' => "Username, IP address or IP range you want to unblock. Cannot be used together with {$p}id",
+ 			'token' => "An unblock token previously obtained through prop=info",
+-			'gettoken' => 'If set, an unblock token will be returned, and no other action will be taken',
+ 			'reason' => 'Reason for unblock',
+ 		);
+ 	}
+@@ -118,10 +107,6 @@
+ 	public function getResultProperties() {
+ 		return array(
+ 			'' => array(
+-				'unblocktoken' => array(
+-					ApiBase::PROP_TYPE => 'string',
+-					ApiBase::PROP_NULLABLE => true
+-				),
+ 				'id' => array(
+ 					ApiBase::PROP_TYPE => 'integer',
+ 					ApiBase::PROP_NULLABLE => true
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/DefaultSettings.php mediawiki-1.21.2/includes/DefaultSettings.php
+--- mediawiki-1.21.1/includes/DefaultSettings.php	2013-09-03 11:56:56.864921018 -0700
++++ mediawiki-1.21.2/includes/DefaultSettings.php	2013-09-03 11:56:39.653921186 -0700
+@@ -63,7 +63,7 @@
+  * MediaWiki version number
+  * @since 1.2
+  */
+-$wgVersion = '1.21.1';
++$wgVersion = '1.21.2';
+ 
+ /**
+  * Name of the site. It must be changed in LocalSettings.php
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/filerepo/file/LocalFile.php mediawiki-1.21.2/includes/filerepo/file/LocalFile.php
+--- mediawiki-1.21.1/includes/filerepo/file/LocalFile.php	2013-09-03 11:56:56.865921018 -0700
++++ mediawiki-1.21.2/includes/filerepo/file/LocalFile.php	2013-09-03 11:56:39.690921185 -0700
+@@ -1484,6 +1484,7 @@
+ 	 * @return FileRepoStatus object.
+ 	 */
+ 	function delete( $reason, $suppress = false ) {
++		global $wgUseSquid;
+ 		if ( $this->getRepo()->getReadOnlyReason() !== false ) {
+ 			return $this->readOnlyFatalStatus();
+ 		}
+@@ -1506,6 +1507,15 @@
+ 			$this->purgeOldThumbnails( $archiveName );
+ 		}
+ 
++		if ( $wgUseSquid ) {
++			// Purge the squid
++			$purgeUrls = array();
++			foreach ($archiveNames as $archiveName ) {
++				$purgeUrls[] = $this->getArchiveUrl( $archiveName );
++			}
++			SquidUpdate::purge( $purgeUrls );
++		}
++
+ 		return $status;
+ 	}
+ 
+@@ -1524,6 +1534,7 @@
+ 	 * @return FileRepoStatus object.
+ 	 */
+ 	function deleteOld( $archiveName, $reason, $suppress = false ) {
++		global $wgUseSquid;
+ 		if ( $this->getRepo()->getReadOnlyReason() !== false ) {
+ 			return $this->readOnlyFatalStatus();
+ 		}
+@@ -1541,6 +1552,11 @@
+ 			$this->purgeHistory();
+ 		}
+ 
++		if ( $wgUseSquid ) {
++			// Purge the squid
++			SquidUpdate::purge( array( $this->getArchiveUrl( $archiveName ) ) );
++		}
++
+ 		return $status;
+ 	}
+ 
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/installer/Installer.php mediawiki-1.21.2/includes/installer/Installer.php
+--- mediawiki-1.21.1/includes/installer/Installer.php	2013-09-03 11:56:56.866921018 -0700
++++ mediawiki-1.21.2/includes/installer/Installer.php	2013-09-03 11:56:39.708921185 -0700
+@@ -46,6 +46,14 @@
+ 	 */
+ 	protected $settings;
+ 
++
++	/**
++	 * List of detected DBs, access using getCompiledDBs().
++	 *
++	 * @var array
++	 */
++	protected $compiledDBs;
++
+ 	/**
+ 	 * Cached DB installer instances, access using getDBInstaller().
+ 	 *
+@@ -173,7 +181,6 @@
+ 	protected $internalDefaults = array(
+ 		'_UserLang' => 'en',
+ 		'_Environment' => false,
+-		'_CompiledDBs' => array(),
+ 		'_SafeMode' => false,
+ 		'_RaiseMemory' => false,
+ 		'_UpgradeDone' => false,
+@@ -368,7 +375,7 @@
+ 				}
+ 			}
+ 		}
+-		$this->setVar( '_CompiledDBs', $compiledDBs );
++		$this->compiledDBs = $compiledDBs;
+ 
+ 		$this->parserTitle = Title::newFromText( 'Installer' );
+ 		$this->parserOptions = new ParserOptions; // language will  be wrong :(
+@@ -450,6 +457,15 @@
+ 	}
+ 
+ 	/**
++	 * Get a list of DBs supported by current PHP setup
++	 *
++	 * @return array
++	 */
++	public function getCompiledDBs() {
++		return $this->compiledDBs;
++	}
++
++	/**
+ 	 * Get an instance of DatabaseInstaller for the specified DB type.
+ 	 *
+ 	 * @param $type Mixed: DB installer for which is needed, false to use default.
+@@ -647,13 +663,7 @@
+ 			$allNames[] = wfMessage( "config-type-$name" )->text();
+ 		}
+ 
+-		// cache initially available databases to make sure that everything will be displayed correctly
+-		// after a refresh on env checks page
+-		$databases = $this->getVar( '_CompiledDBs-preFilter' );
+-		if ( !$databases ) {
+-			$databases = $this->getVar( '_CompiledDBs' );
+-			$this->setVar( '_CompiledDBs-preFilter', $databases );
+-		}
++		$databases = $this->getCompiledDBs();
+ 
+ 		$databases = array_flip ( $databases );
+ 		foreach ( array_keys( $databases ) as $db ) {
+@@ -672,7 +682,6 @@
+ 			// @todo FIXME: This only works for the web installer!
+ 			return false;
+ 		}
+-		$this->setVar( '_CompiledDBs', $databases );
+ 		return true;
+ 	}
+ 
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/installer/MysqlUpdater.php mediawiki-1.21.2/includes/installer/MysqlUpdater.php
+--- mediawiki-1.21.1/includes/installer/MysqlUpdater.php	2013-09-03 11:56:56.867921018 -0700
++++ mediawiki-1.21.2/includes/installer/MysqlUpdater.php	2013-09-03 11:56:39.709921185 -0700
+@@ -200,9 +200,9 @@
+ 
+ 			// 1.19
+ 			array( 'addIndex', 'logging',       'type_action',      'patch-logging-type-action-index.sql'),
++			array( 'addField', 'revision',      'rev_sha1',         'patch-rev_sha1.sql' ),
+ 			array( 'doMigrateUserOptions' ),
+ 			array( 'dropField', 'user',         'user_options', 'patch-drop-user_options.sql' ),
+-			array( 'addField', 'revision',      'rev_sha1',         'patch-rev_sha1.sql' ),
+ 			array( 'addField', 'archive',       'ar_sha1',          'patch-ar_sha1.sql' ),
+ 			array( 'addIndex', 'page', 'page_redirect_namespace_len', 'patch-page_redirect_namespace_len.sql' ),
+ 			array( 'addField',	'uploadstash',	'us_chunk_inx',		'patch-uploadstash_chunk.sql' ),
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/installer/WebInstallerPage.php mediawiki-1.21.2/includes/installer/WebInstallerPage.php
+--- mediawiki-1.21.1/includes/installer/WebInstallerPage.php	2013-09-03 11:56:56.867921018 -0700
++++ mediawiki-1.21.2/includes/installer/WebInstallerPage.php	2013-09-03 11:56:39.710921185 -0700
+@@ -462,7 +462,7 @@
+ 
+ 		// It's possible that the library for the default DB type is not compiled in.
+ 		// In that case, instead select the first supported DB type in the list.
+-		$compiledDBs = $this->parent->getVar( '_CompiledDBs' );
++		$compiledDBs = $this->parent->getCompiledDBs();
+ 		if ( !in_array( $defaultType, $compiledDBs ) ) {
+ 			$defaultType = $compiledDBs[0];
+ 		}
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/libs/IEUrlExtension.php mediawiki-1.21.2/includes/libs/IEUrlExtension.php
+--- mediawiki-1.21.1/includes/libs/IEUrlExtension.php	2013-09-03 11:56:56.867921018 -0700
++++ mediawiki-1.21.2/includes/libs/IEUrlExtension.php	2013-09-03 11:56:39.712921185 -0700
+@@ -232,7 +232,7 @@
+ 			}
+ 			// We found an illegal character or another dot
+ 			// Skip to that character and continue the loop
+-			$pos = $nextPos + 1;
++			$pos = $nextPos;
+ 			$remainingLength = $urlLength - $pos;
+ 		}
+ 		return false;
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/resourceloader/ResourceLoader.php mediawiki-1.21.2/includes/resourceloader/ResourceLoader.php
+--- mediawiki-1.21.1/includes/resourceloader/ResourceLoader.php	2013-09-03 11:56:56.867921018 -0700
++++ mediawiki-1.21.2/includes/resourceloader/ResourceLoader.php	2013-09-03 11:56:39.723921185 -0700
+@@ -175,7 +175,7 @@
+ 			$cache->set( $key, $result );
+ 		} catch ( Exception $exception ) {
+ 			// Return exception as a comment
+-			$result = $this->makeComment( $exception->__toString() );
++			$result = $this->formatException( $exception );
+ 			$this->hasErrors = true;
+ 		}
+ 
+@@ -461,7 +461,7 @@
+ 			$this->preloadModuleInfo( array_keys( $modules ), $context );
+ 		} catch( Exception $e ) {
+ 			// Add exception to the output as a comment
+-			$errors .= $this->makeComment( $e->__toString() );
++			$errors .= $this->formatException( $e );
+ 			$this->hasErrors = true;
+ 		}
+ 
+@@ -479,7 +479,7 @@
+ 				$mtime = max( $mtime, $module->getModifiedTime( $context ) );
+ 			} catch ( Exception $e ) {
+ 				// Add exception to the output as a comment
+-				$errors .= $this->makeComment( $e->__toString() );
++				$errors .= $this->formatException( $e );
+ 				$this->hasErrors = true;
+ 			}
+ 		}
+@@ -663,6 +663,22 @@
+ 	}
+ 
+ 	/**
++	 * Handle exception display
++	 *
++	 * @param Exception $e to be shown to the user
++	 * @return string sanitized text that can be returned to the user
++	 */
++	protected function formatException( $e ) {
++		global $wgShowExceptionDetails;
++
++		if ( $wgShowExceptionDetails ) {
++			return $this->makeComment( $e->__toString() );
++		} else {
++			return $this->makeComment( wfMessage( 'internalerror' )->text() );
++		}
++	}
++
++	/**
+ 	 * Generates code for a response
+ 	 *
+ 	 * @param $context ResourceLoaderContext: Context in which to generate a response
+@@ -686,7 +702,7 @@
+ 				$blobs = MessageBlobStore::get( $this, $modules, $context->getLanguage() );
+ 			} catch ( Exception $e ) {
+ 				// Add exception to the output as a comment
+-				$exceptions .= $this->makeComment( $e->__toString() );
++				$exceptions .= $this->formatException( $e );
+ 				$this->hasErrors = true;
+ 			}
+ 		} else {
+@@ -792,7 +808,7 @@
+ 				}
+ 			} catch ( Exception $e ) {
+ 				// Add exception to the output as a comment
+-				$exceptions .= $this->makeComment( $e->__toString() );
++				$exceptions .= $this->formatException( $e );
+ 				$this->hasErrors = true;
+ 
+ 				// Register module as missing
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/includes/revisiondelete/RevisionDelete.php mediawiki-1.21.2/includes/revisiondelete/RevisionDelete.php
+--- mediawiki-1.21.1/includes/revisiondelete/RevisionDelete.php	2013-09-03 11:56:56.867921018 -0700
++++ mediawiki-1.21.2/includes/revisiondelete/RevisionDelete.php	2013-09-03 11:56:39.724921185 -0700
+@@ -499,9 +499,20 @@
+ 	}
+ 
+ 	public function doPostCommitUpdates() {
++		global $wgUseSquid;
+ 		$file = wfLocalFile( $this->title );
+ 		$file->purgeCache();
+ 		$file->purgeDescription();
++		$purgeUrls = array();
++		foreach ( $this->ids as $timestamp ) {
++			$archiveName = $timestamp . '!' . $this->title->getDBkey();
++			$file->purgeOldThumbnails( $archiveName );
++			$purgeUrls[] = $file->getArchiveUrl( $archiveName );
++		}
++		if ( $wgUseSquid ) {
++			// purge full images from cache
++			SquidUpdate::purge( $purgeUrls );
++		}
+ 		return Status::newGood();
+ 	}
+ 
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/RELEASE-NOTES-1.21 mediawiki-1.21.2/RELEASE-NOTES-1.21
+--- mediawiki-1.21.1/RELEASE-NOTES-1.21	2013-09-03 11:56:56.862921018 -0700
++++ mediawiki-1.21.2/RELEASE-NOTES-1.21	2013-09-03 11:56:39.645921186 -0700
+@@ -1,9 +1,33 @@
++= MediaWiki release notes =
++
+ Security reminder: MediaWiki does not require PHP's register_globals. If you
+ have it on, turn it '''off''' if you can.
+ 
+-== MediaWiki 1.21 ==
++== MediaWiki 1.21.2 ==
++
++This is a security adn maintenance release of the MediaWiki 1.21 branch.
++
++=== Changes since 1.21.1 ===
++
++* SECURITY: Fix extension detection with 2 .'s
++* SECURITY: Support for the 'gettoken' parameter to action=block and action=unblock,
++  deprecated since 1.20, has been removed.
++* SECURITY: Sanitize ResourceLoader exception messages
++* Purge upstream caches when deleting file assets.
++* Unit test suite now runs the AutoLoader tests. Also fixed the autoloading
++  entry for the PageORMTableForTesting class though it had no impact.
++
++== MediaWiki 1.21.1 ==
++
++This is a maintenance release of the 1.21 branch.
++
++MediaWiki 1.21 is a stable branch, and is recommended for use in production.
++
++=== Changes since 1.21.0 ===
+ 
+-MediaWiki 1.21 is an stable branch and is recommended for use in production.
++* An incorrect version number was used for 1.21.0.  1.21.1 has the correct number.
++* A problem with the Oracle SQL table creation was fixed.
++* (PdfHandler extension) Fix warning if pdfinfo fails but pdftext succeeds.
+ 
+ === Configuration changes in 1.21 ===
+ * (bug 48306) $wgAllowChunkedUploads has been added and is false by default.
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/tests/phpunit/includes/libs/IEUrlExtensionTest.php mediawiki-1.21.2/tests/phpunit/includes/libs/IEUrlExtensionTest.php
+--- mediawiki-1.21.1/tests/phpunit/includes/libs/IEUrlExtensionTest.php	2013-09-03 11:56:56.868921018 -0700
++++ mediawiki-1.21.2/tests/phpunit/includes/libs/IEUrlExtensionTest.php	2013-09-03 11:56:40.462921178 -0700
+@@ -115,4 +115,12 @@
+ 			'Dot at end of string'
+ 		);
+ 	}
++
++	function testTwoDots() {
++		$this->assertEquals(
++			'z',
++			IEUrlExtension::findIE6Extension( 'x.y.z' ),
++			'Two dots'
++		);
++	}
+ }
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/tests/phpunit/suite.xml mediawiki-1.21.2/tests/phpunit/suite.xml
+--- mediawiki-1.21.1/tests/phpunit/suite.xml	2013-09-03 11:56:56.868921018 -0700
++++ mediawiki-1.21.2/tests/phpunit/suite.xml	2013-09-03 11:56:40.467921178 -0700
+@@ -29,6 +29,7 @@
+ 			<directory>maintenance</directory>
+ 		</testsuite>
+ 		<testsuite name="structure">
++			<file>AutoLoaderTest.php</file>
+ 			<file>StructureTest.php</file>
+ 		</testsuite>
+ 		<testsuite name="uploadfromurl">
+diff -Nruw -x messages -x '*.png' -x '*.jpg' -x '*.xcf' -x '*.gif' -x '*.svg' -x '*.tiff' -x '*.zip' -x '*.xmp' -x '.git*' mediawiki-1.21.1/tests/TestsAutoLoader.php mediawiki-1.21.2/tests/TestsAutoLoader.php
+--- mediawiki-1.21.1/tests/TestsAutoLoader.php	2013-09-03 11:56:56.867921018 -0700
++++ mediawiki-1.21.2/tests/TestsAutoLoader.php	2013-09-03 11:56:40.446921178 -0700
+@@ -47,6 +47,7 @@
+ 
+ 	//db
+ 	'ORMTableTest' => "$testDir/phpunit/includes/db/ORMTableTest.php",
++	'PageORMTableForTesting' => "$testDir/phpunit/includes/db/ORMTableTest.php",
+ 
+ 	//Selenium
+ 	'SeleniumTestConstants' => "$testDir/selenium/SeleniumTestConstants.php",

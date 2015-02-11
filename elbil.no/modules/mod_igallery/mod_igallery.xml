@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="2.5" client="site" method="upgrade">
+
+    <name>Ignite Gallery Module</name>
+    <author>Matthew Thomson</author>
+    <creationDate>August 2013</creationDate>
+    <copyright>(C) 2013 Matthew Thomson. All rights reserved.</copyright>
+    <license>GPL v2</license>
+    <authorUrl>www.ignitegallery.com</authorUrl>
+    <version>3.5</version>
+    <description>Puts gallery images or menu images into a module position.</description>
+
+    <files>
+        <filename module="mod_igallery">mod_igallery.php</filename>
+    </files>
+
+    <config>
+    <fields name="params">
+        <fieldset name="basic">
+
+        <field name="type" type="list" default="category" label="Module Type" description="" size="9">
+            <option value="category">Single Gallery Images</option>
+            <option value="latest">Latest Images</option>
+            <option value="hits">Most Viewed Images</option>
+            <option value="rated">Highest Rated Images</option>
+            <option value="random">Random Images</option>
+            <option value="child_menu_images">Child Categories</option>
+            <option value="latest_menu_images">Latest Categories</option>
+            <option value="hits_menu_images">Most Viewed Categories</option>
+            <option value="random_menu_images">Random Categories</option>
+        </field>
+
+        <field name="@spacer" type="spacer" default="" label="" description="" />
+
+        <field name="category_id" type="icategory" section="com_igallery" default="1" label="Category" description="" size="10" required="true" addfieldpath="administrator/components/com_igallery/models/fields"/>
+
+        <field name="children" type="radio" default="1" label="Search Child Categories" description="">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </field>
+
+        <field name="add_links" type="radio" default="0" label="Add Links To Images" description="">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+        </field>
+
+        <field name="profile_id" type="iprofile" default="" label="Profile" description="" size="10" />
+
+        <field name="@spacer" type="spacer" default="" label="" description="" />
+
+        <field name="tag" type="text" default="" label="Image Tags" description="" size="45" />
+
+        <field name="photo_limit" type="text" default="0" label="Limit" description="" size="10" />
+
+        <field name="@spacer" type="spacer" default="" label="" description="" />
+
+        <field name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="fieldMODULECLASSSUFFIX" />
+    </fieldset>
+    </fields>
+    </config>
+
+</extension>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="file" method="upgrade" version="2.5">
+    <name>com_j2store</name>
+    <version>1381855896</version>
+    <creationDate>15.10.2013</creationDate>
+    <author>j2store</author>
+    <authorEmail>support@j2store.org</authorEmail>
+    <authorUrl>https://j2store.org</authorUrl>
+    <copyright>© 2013-2013 - j2store-org. All rights reserved!</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <packager>CTransifex</packager>
+    <packagerurl>https://compojoom.com</packagerurl>
+    <description>
+        <![CDATA[This package was auto generated with CTransifex(https://compojoom.com). We've grabbed the latest language files for our extension from transifex.com.
+        Special thanks to OpenTranslators (http://opentranslators.org) for helping us with this translation!]]>
+    </description>
+    <fileset>
+        <files folder="admin" target="administrator/language/nb-NO"><filename>nb-NO.com_j2store.ini</filename>
+<filename>nb-NO.com_j2store.sys.ini</filename>
+<filename>nb-NO.plg_content_j2store.ini</filename>
+<filename>nb-NO.plg_content_j2store.sys.ini</filename>
+<filename>nb-NO.plg_j2store_payment_offline.ini</filename>
+<filename>nb-NO.plg_j2store_payment_offline.sys.ini</filename>
+<filename>nb-NO.plg_j2store_payment_sagepay.ini</filename>
+<filename>nb-NO.plg_j2store_payment_sagepay.sys.ini</filename></files>
+        <files folder="frontend" target="language/nb-NO"><filename>nb-NO.com_j2store.ini</filename></files>
+    </fileset>
+</extension>

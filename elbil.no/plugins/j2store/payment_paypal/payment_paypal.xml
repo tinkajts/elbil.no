@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="j2store" method="upgrade">
+	<name>plg_j2store_payments_paypal</name>
+	<version>2.6</version>
+	<creationDate>October 2013</creationDate>
+	<author>J2 Store</author>
+	<authorEmail>support@j2store.org</authorEmail>
+	<authorUrl>http://www.j2store.org</authorUrl>
+	<copyright>2010 Weblogicx India Private Limited</copyright>
+	<license>GNU General Public License v3 or later versions</license>
+	<description>J2STORE_PAYPAL_PLUGINDESC</description>
+	<scriptfile>script.payment_paypal.php</scriptfile>
+	<files>
+		<filename plugin="payment_paypal">payment_paypal.php</filename>
+		<filename>index.html</filename>
+		<folder>payment_paypal</folder>  	
+	</files>
+
+	<languages>
+		<language tag="en-GB">languages/en-GB.plg_j2store_payment_paypal.ini</language>
+		<language tag="en-GB">languages/en-GB.plg_j2store_payment_paypal.sys.ini</language>
+		<language tag="nb-NO">languages/nb-NO.plg_j2store_payment_paypal.ini</language>
+		<language tag="nb-NO">languages/nb-NO.plg_j2store_payment_paypal.sys.ini</language>
+	</languages>
+	<config>
+	<fields name="params">
+  	  <fieldset name="basic">
+  	  <field name="display_name" type="text" size="30" default="" label="j2store_plugin_display_name" description="j2store_plugin_display_name_desc"/>
+		<field name="merchant_email" type="text" size="50" default="" label="j2store_paypal_email" description="j2store_paypal_email_desc"/>
+		<field name="secure_post" type="radio" default="0" label="j2store_paypal_secure_post" description="j2store_paypal_secure_post_desc">
+		  <option value="0">No</option>
+		  <option value="1">Yes</option>
+		</field>
+		<field type="spacer" />
+        <field name="sandbox" type="radio" default="0" label="j2store_paypal_use_sandbox" description="j2store_paypal_use_sandbox_desc">
+          <option value="0">No</option>
+          <option value="1">Yes</option>
+        </field>
+        <field name="sandbox_merchant_email" type="text" size="50" default="" label="j2store_paypal_sandbox_merchant_email" description="j2store_paypal_sandbox_merchant_email_desc"/>        
+        <field type="spacer" />
+       <field name="articleid" type="text" size="10" default="" label="j2store_paypal_thanks_msg" description="j2store_paypal_thanks_msg_desc"/>
+       <field type="spacer" />
+       <field name="cbt" type="text" size="50" default="" label="J2STORE_PAYPAL_CBT_LABEL" description="J2STORE_PAYPAL_CBT_DESC" />
+       <field name="image_url" type="text" size="50" default="" label="J2STORE_PAYPAL_IMAGE_LABEL" description="J2STORE_PAYPAL_IMAGE_DESC" />
+		<field name="cpp_header_image" type="text" size="50" default="" label="J2STORE_PAYPAL_HEADER_LABEL" description="J2STORE_PAYPAL_HEADER_DESC" />
+		<field name="cpp_headerback_color" type="text" size="50" default="" label="J2STORE_PAYPAL_HEADERBACK_LABEL" description="J2STORE_PAYPAL_HEADERBACK_DESC" />
+		<field name="cpp_headerborder_color" type="text" size="50" default="" label="J2STORE_PAYPAL_HEADERBORDER_LABEL" description="J2STORE_PAYPAL_HEADERBORDER_DESC" />
+				
+		</fieldset>
+	</fields>
+</config>				
+</extension>

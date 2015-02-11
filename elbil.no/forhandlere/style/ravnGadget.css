@@ -1,0 +1,91 @@
+@CHARSET "UTF-8";
+body{
+padding: 0;
+margin: 0;
+}
+	.ravn-status-box{
+		font-family: Calibri,Verdana,sans-serif;
+		width: 208px;
+		border: 0;
+		text-align: center;
+		background-color: #f5f5f5;
+		color: #9cc318;
+	}
+	.ravn-status-box-full{
+		font-family: Calibri,Verdana,sans-serif;
+		width: 700px;
+		border: 0px solid #e5e5e5;
+		text-align: left;
+		color: #4f4f4f;
+		margin: 0;
+		padding: 0;
+		line-height: 120%;
+		font-size: 12pt;
+	}
+	.ravn-status-box-full h1{
+		margin:  5px 0;
+		font-size: 18pt;
+	}
+	
+	.ravn-status-box-full h3{
+		color: #9cc318;
+		font-size: 16pt;
+		margin: 0 0 5px 0;
+	}
+	
+	.ravn-status-box-full small{
+		font-style: italic;
+		display: block;
+	}
+	.ravn-status-box h1{
+		margin:  0;
+		font-size: 18px;
+	}
+	.ravn-more-info{
+		margin: 1em 0 0 0;
+		font-size: 12px;
+	}
+	.ravn-more-info a{
+		text-decoration:none;
+		color: #9cc318;
+	}
+	
+	.ravn-more-info a:hover{
+		text-decoration:underline;		
+	}
+	
+	.ravn-status-kontakt-liste-wrapper{
+		width: 450px;
+		border:0px solid black;
+		margin-bottom: 1.5em;
+	}
+	.ravn-status-kontakt-liste{
+		margin:0;
+		padding: 0; 
+		width: 450px; 
+		text-align: left; 
+		list-style-type: disc;
+		list-style-position: inside;
+	}
+	.ravn-status-kontakt-liste li{
+		padding-left: 10px;
+		font-weight: normal;
+		font-size: 11pt;
+	}
+	.ravn-status-kontakt-liste li.listheader{
+		font-weight: bold;
+		display: block; 
+	}
+	
+	.ravn-status-box-full-lesmer{
+		font-weight: bold;		
+	}
+	
+	.ravn-status-box-full-lesmer a{
+		text-decoration:none;
+		color: #9cc318;
+	}
+	
+	.ravn-status-box-full-lesmer a:hover{
+		text-decoration:underline;		
+	}

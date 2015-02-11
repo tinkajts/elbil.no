@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="package" version="2.5.0" method="upgrade">
+	<name>Regweb</name>
+	<creationDate>October 2013</creationDate>
+	<author>Regweb</author>
+	<authorEmail>post@regweb.no</authorEmail>
+	<authorUrl>http://www.regweb.no</authorUrl>
+	<copyright>(c) Regweb. All rights reserved.</copyright>
+	<license>Apache 2.0</license>
+	<version>0.0.1</version>
+	<description>Regweb integration</description>
+	<packagename>regweb</packagename>
+	<packager>Regweb</packager>
+	<packagerurl>http://www.regweb.no</packagerurl>
+	
+	<!-- <update>http://updateurl</update> -->
+	
+	<files folder="packages">
+		<file type="library" id="lib_regweb">lib_regweb.zip</file>
+		<file type="component" id="com_regweb">com_regweb.zip</file>
+		<file type="plugin" id="auth_regweb">plg_auth_regweb.zip</file>
+		<file type="plugin" id="user_regweb">plg_user_regweb.zip</file>
+		<file type="plugin" id="system_regweb">plg_system_regweb.zip</file>
+		<file type="module" id="mod_regweb">mod_regweb_userbox.zip</file>
+	</files>
+	
+</extension>

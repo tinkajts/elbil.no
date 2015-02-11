@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="content" client="site" method="upgrade">
+	<name>PLG_PWEB_FBARTICLEIMAGES</name>
+	<creationDate>2014-10-17</creationDate>
+	<author>Piotr Moćko</author>
+	<copyright>Copyright (C) 2014 Perfect Web sp. z o.o., All rights reserved.</copyright>
+	<license>GNU General Public Licence http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<authorEmail>office@perfect-web.co</authorEmail>
+	<authorUrl>http://www.perfect-web.co</authorUrl>
+	<version>2.0.19</version>
+	<description>PLG_PWEB_FBARTICLEIMAGES_XML_DESCRIPTION</description>
+	
+	<files>
+		<filename plugin="fblinkcontentimage">fblinkcontentimage.php</filename>
+		<filename>index.html</filename>
+		<folder>form</folder>
+	</files>
+	
+	<languages folder="lang">
+		<language tag="en-GB">en-GB.plg_content_fblinkcontentimage.ini</language>
+		<language tag="en-GB">en-GB.plg_content_fblinkcontentimage.sys.ini</language>
+		<language tag="pl-PL">pl-PL.plg_content_fblinkcontentimage.ini</language>
+		<language tag="pl-PL">pl-PL.plg_content_fblinkcontentimage.sys.ini</language>
+	</languages>
+	
+	<config>
+		<fields name="params">
+			
+			<fieldset name="basic" addfieldpath="plugins/content/fblinkcontentimage/form/fields">
+				
+				<field type="pwebversion" name="PLG_PWEB_FBARTICLEIMAGES_VERSION" ext_type="plugin" ext_element="fblinkcontentimage" ext_folder="content" ext_client="0" />
+				
+				<field type="spacer" name="PLG_PWEB_FBARTICLEIMAGES_OPENGRAPH" />
+				
+				<field name="add_og_tags" type="radio" default="1" class="btn-group"
+					label="PLG_PWEB_FBARTICLEIMAGES_ADD_OPENGRAPH_TAGS" 
+					description="PLG_PWEB_FBARTICLEIMAGES_ADD_OPENGRAPH_TAGS_DESC"
+				>
+					<option value="1">PLG_PWEB_FBARTICLEIMAGES_OPTION_ARTICLE</option>
+					<option value="2" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_ARTICLE_CATEGORY</option>
+				</field>
+				<field name="og_categories" type="category" extension="com_content" multiple="true" size="5" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_OG_CATEGORIES" 
+					description="PLG_PWEB_FBARTICLEIMAGES_OG_CATEGORIES_DESC" 
+				/>
+				<field name="og_details" type="radio" default="1" class="btn-group" 
+					label="PLG_PWEB_FBARTICLEIMAGES_OG_DETAILS" 
+					description="PLG_PWEB_FBARTICLEIMAGES_OG_DETAILS_DESC"
+				>
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="og_desc" type="list" default="3" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_OPENGRAPH_DESCRIPTION_TAG"
+					description="PLG_PWEB_FBARTICLEIMAGES_OPENGRAPH_DESCRIPTION_TAG_DESC"
+				>
+					<option value="0">JDISABLED</option>
+					<option value="1">PLG_PWEB_FBARTICLEIMAGES_OPTION_META</option>
+					<option value="2">PLG_PWEB_FBARTICLEIMAGES_OPTION_INTROTEXT</option>
+					<option value="3">PLG_PWEB_FBARTICLEIMAGES_OPTION_META_INTROTEXT</option>
+				</field>
+				
+				<field name="image_intro" type="radio" default="0" class="btn-group" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_INTRO_IMAGE" 
+					description="PLG_PWEB_FBARTICLEIMAGES_INTRO_IMAGE_DESC"
+				>
+					<option value="0" disabled="false">JNo</option>
+					<option value="1" disabled="false">JYes</option>
+				</field>
+				<field name="image_fulltext" type="radio" default="0" class="btn-group" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_FULLTEXT_IMAGE" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FULLTEXT_IMAGE_DESC"
+				>
+					<option value="0" disabled="false">JNo</option>
+					<option value="1" disabled="false">JYes</option>
+				</field>
+				<field name="image_content" type="radio" default="1" class="btn-group" 
+					label="PLG_PWEB_FBARTICLEIMAGES_CONTENT_IMAGE" 
+					description="PLG_PWEB_FBARTICLEIMAGES_CONTENT_IMAGE_DESC"
+				>
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				
+				<field name="fb_admins" type="text"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_ADMINS" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_ADMINS_DESC"
+				/>
+				<field name="fb_appid" type="text"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_APP_ID" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_APP_ID_DESC"
+				/>
+				<field name="fb_xmlns" type="textarea" readonly="true" rows="2" cols="45" 
+					default="xmlns:og=&quot;http://ogp.me/ns#&quot; xmlns:fb=&quot;http://ogp.me/ns/fb#&quot;" 
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_XMLNS" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_XMLNS_DESC" 
+				/>
+				
+				<field type="spacer" name="PLG_PWEB_FBARTICLEIMAGES_IMAGES" />
+				
+				<field name="images_limit" type="radio" default="2" class="btn-group" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_LIMIT_IMAGES" 
+					description="PLG_PWEB_FBARTICLEIMAGES_LIMIT_IMAGES_DESC"
+				>
+					<option value="1">PLG_PWEB_FBARTICLEIMAGES_OPTION_FIRST_IMAGE</option>
+					<option value="2">PLG_PWEB_FBARTICLEIMAGES_OPTION_ALL_IMAGES</option>
+				</field>
+				<field name="image_ext" type="radio" default="1" class="btn-group" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_IMAGES_WITH_EXT" 
+					description="PLG_PWEB_FBARTICLEIMAGES_IMAGES_WITH_EXT_DESC"
+				>
+					<option value="0" disabled="false">JNo</option>
+					<option value="1" disabled="false">JYes</option>
+				</field>
+				<field name="image_default" type="media" 
+					label="PLG_PWEB_FBARTICLEIMAGES_DEFAULT_IMAGE" 
+					description="PLG_PWEB_FBARTICLEIMAGES_DEFAULT_IMAGE_DESC" 
+				/>
+				<field name="image_home" type="list" default="default" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_HOME_PAGE_IMAGE"
+					description="PLG_PWEB_FBARTICLEIMAGES_HOME_PAGE_IMAGE_DESC"
+				>
+					<option value="0">PLG_PWEB_FBARTICLEIMAGES_OPTION_NO_IMAGE</option>
+					<option value="default">PLG_PWEB_FBARTICLEIMAGES_OPTION_DEFAULT</option>
+					<option value="articles">PLG_PWEB_FBARTICLEIMAGES_OPTION_ARTICLES</option>
+					<option value="category">PLG_PWEB_FBARTICLEIMAGES_OPTION_CATEGORY</option>
+				</field>
+				<field name="image_category" type="list" default="category" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_CATEGORY_PAGE_IMAGE" 
+					description="PLG_PWEB_FBARTICLEIMAGES_CATEGORY_PAGE_IMAGE_DESC"
+				>
+					<option value="0">PLG_PWEB_FBARTICLEIMAGES_OPTION_NO_IMAGE</option>
+					<option value="default">PLG_PWEB_FBARTICLEIMAGES_OPTION_DEFAULT</option>
+					<option value="articles">PLG_PWEB_FBARTICLEIMAGES_OPTION_ARTICLES</option>
+					<option value="category">PLG_PWEB_FBARTICLEIMAGES_OPTION_CATEGORY</option>
+				</field>
+				
+				<field name="min_score" type="list" default="2" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_CHECK_IMAGES" 
+					description="PLG_PWEB_FBARTICLEIMAGES_CHECK_IMAGES_DESC"
+				>
+					<option value="-1">PLG_PWEB_FBARTICLEIMAGES_NOT_SKIP_IMAGES</option>
+					<option value="1">PLG_PWEB_FBARTICLEIMAGES_SKIP_IMAGES_1</option>
+					<option value="2">PLG_PWEB_FBARTICLEIMAGES_SKIP_IMAGES_2</option>
+					<option value="3">PLG_PWEB_FBARTICLEIMAGES_SKIP_IMAGES_3</option>
+				</field>
+				
+				<field type="spacer" name="PLG_PWEB_FBARTICLEIMAGES_OPENGRAPH_DESCRIPTION" />
+			
+			</fieldset>
+			
+			<fieldset name="FBLIKE">
+			
+				<field type="spacer" name="PLG_PWEB_FBARTICLEIMAGES_PRO_FEATURES" />
+								
+				<field name="fb_like" type="radio" class="btn-group" default="0" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_LIKE" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_LIKE_DESC"
+				>
+					<option value="0">JNo</option>
+					<option value="1" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_ARTICLE</option>
+					<option value="2" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_ARTICLE_CATEGORY</option>
+				</field>
+				<field name="fb_categories" type="category" extension="com_content" multiple="true" size="5" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_CATEGORIES" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_CATEGORIES_DESC" 
+				/>
+				<field name="fb_position" type="radio" class="btn-group" default="2" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_POSITION" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_POSITION_DESC"
+				>
+					<option value="1" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_BEFORE_ARTICLE</option>
+					<option value="2" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_AFTER_ARTICLE</option>
+				</field>
+				<field name="fb_align" type="radio" class="btn-group" default="left" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_ALIGN" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_ALIGN_DESC"
+				>
+					<option value="left" disabled="false">JGLOBAL_LEFT</option>
+					<option value="right" disabled="false">JGLOBAL_RIGHT</option>
+				</field>
+				<field name="fb_type" type="list" defaulr="xfbml" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_LIKE_TYPE" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_LIKE_TYPE_DESC"
+				>
+					<option value="html5">HTML5</option>
+					<option value="xfbml">XFBML</option>
+					<option value="iframe">Iframe</option>
+				</field>
+				<field name="fb_send" type="radio" class="btn-group" default="0" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_SEND" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_SEND_DESC"
+				>
+					<option value="0" disabled="false">JNo</option>
+					<option value="1" disabled="false">JYes</option>
+				</field>
+				<field name="fb_layout" type="radio" class="btn-group" default="button_count" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_LAYOUT" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_LAYOUT_DESC"
+				>
+					<option value="standard" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_FB_STANDARD</option>
+					<option value="button_count" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_FB_BUTTON_COUNT</option>
+					<option value="box_count" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_FB_BOX_COUNT</option>
+				</field>
+				<field name="fb_width" type="text" default="100" filter="integer" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_WIDTH" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_WIDTH_DESC"
+				/>
+				<field name="fb_show_faces" type="radio" class="btn-group" default="0" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_SHOW_FACES" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_SHOW_FACES_DESC"
+				>
+					<option value="0" disabled="false">JNo</option>
+					<option value="1" disabled="false">JYes</option>
+				</field>
+				<field name="fb_action" type="radio" class="btn-group" default="light" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_ACTION" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_ACTION_DESC"
+				>
+					<option value="like" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_FB_LIKE</option>
+					<option value="recommend" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_FB_RECOMMEND</option>
+				</field>
+				<field name="fb_colorscheme" type="radio" class="btn-group" default="light" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_COLOR_SCHEME" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_COLOR_SCHEME_DESC"
+				>
+					<option value="light" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_FB_LIGHT</option>
+					<option value="dark" disabled="false">PLG_PWEB_FBARTICLEIMAGES_OPTION_FB_DARK</option>
+				</field>
+				<field name="fb_font" type="list" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_FONT" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_FONT_DESC"
+				>
+					<option value="">JOPTION_USE_DEFAULT</option>
+					<option value="arial">arial</option>
+					<option value="lucida grande">lucida grande</option>
+					<option value="segoe ui">segoe ui</option>
+					<option value="tahoma">tahoma</option>
+					<option value="trebuchet ms">trebuchet ms</option>
+					<option value="verdana">verdana</option>
+				</field>
+				
+				<field name="fb_jssdk" type="radio" class="btn-group" default="1" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_JSSDK" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_JSSDK_DESC"
+				>
+					<option value="0" disabled="false">JNo</option>
+					<option value="1" disabled="false">JYes</option>
+				</field>
+				<field name="fb_root" type="radio" class="btn-group" default="1" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_FB_ROOT" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FB_ROOT_DESC"
+				>
+					<option value="0" disabled="false">JNo</option>
+					<option value="1" disabled="false">JYes</option>
+				</field>
+				
+			</fieldset>
+		
+			<fieldset name="advanced">
+				
+				<field name="track_social" type="radio" class="btn-group" default="0" disabled="false" 
+					label="PLG_PWEB_FBARTICLEIMAGES_TRACKER" description="PLG_PWEB_FBARTICLEIMAGES_TRACKER_DESC">
+					<option value="0">JDISABLED</option>
+					<option value="1">PLG_PWEB_FBARTICLEIMAGES_TRACKER_TRADITIONAL</option>
+					<option value="2">PLG_PWEB_FBARTICLEIMAGES_TRACKER_ASYNCHRONOUS</option>
+					<option value="3">PLG_PWEB_FBARTICLEIMAGES_TRACKER_UNIVERSAL</option>
+				</field>
+				<field name="track_social_custom" type="textarea" filter="safehtml" cols="20" rows="2" disabled="false"
+					label="PLG_PWEB_FBARTICLEIMAGES_CUSTOM_TRACKER" description="PLG_PWEB_FBARTICLEIMAGES_CUSTOM_TRACKER_DESC" />
+				
+				<field name="og_content_prepare" type="radio" class="btn-group" default="0" 
+					label="PLG_PWEB_FBARTICLEIMAGES_OG_CONTENT_PREPARE" 
+					description="PLG_PWEB_FBARTICLEIMAGES_OG_CONTENT_PREPARE_DESC"
+				>
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				
+				<field type="spacer" name="PLG_PWEB_FBARTICLEIMAGES_FACEBOOK_DEBUGGER" />
+				<field name="debug" type="radio" class="btn-group" default="0" 
+					label="PLG_PWEB_FBARTICLEIMAGES_DEBUG" 
+					description="PLG_PWEB_FBARTICLEIMAGES_DEBUG_DESC"
+				>
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				<field name="feed" type="pweb" class="btn-group" default="0" 
+					label="PLG_PWEB_FBARTICLEIMAGES_FEED" 
+					description="PLG_PWEB_FBARTICLEIMAGES_FEED_DESC"
+				>
+					<option value="0">JNo</option>
+					<option value="1">JYes</option>
+				</field>
+				
+			</fieldset>
+			
+		</fields>
+	</config>
+	
+</extension>

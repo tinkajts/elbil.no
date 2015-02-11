@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="library" version="2.5.0" method="upgrade">
+	<name>Regweb</name>
+	<creationDate>October 2013</creationDate>
+	<author>Regweb</author>
+	<authorEmail>post@regweb.no</authorEmail>
+	<authorUrl>http://www.regweb.no</authorUrl>
+	<copyright>(c) Regweb. All rights reserved.</copyright>
+	<license>Apache 2.0</license>
+	<version>0.0.1</version>
+	<description>Regweb integration</description>
+	
+	<libraryname>regweb</libraryname>
+	
+	<files folder="library">
+		<filename>composer.json</filename>
+		<filename>composer.lock</filename>
+		<filename>index.html</filename>
+		<folder>src</folder>
+		<folder>vendor</folder>
+	</files>
+	
+</extension>

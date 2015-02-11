@@ -1,0 +1,91 @@
+
+ul.accordion{
+    list-style:none;   
+    font-family: Cambria, serif;
+    font-size: 16px;
+    font-style: italic;
+    line-height: 1.5em;
+    overflow: hidden;
+    padding: 0;
+	
+    -moz-box-shadow:1px 3px 15px #555;
+    -webkit-box-shadow:1px 3px 15px #555;
+    box-shadow:1px 3px 15px #555;
+    /*border-top:2px solid #fff;
+        border-left:2px solid #fff;*/
+}
+
+.main_heading{
+   
+    padding:10px 0;
+    opacity:0.9;
+    top: 50px;
+    width: 100%;
+    position: absolute;
+    text-transform:uppercase;
+    font-style:normal;
+    font-weight:bold;
+    letter-spacing:1px;
+  
+    text-align:center;
+    text-shadow:-1px -1px 1px #ccc;
+}
+
+ul.accordion li{
+  display:block;
+    border-right:2px solid #fff;
+    border-bottom:2px solid #fff;
+	border-top:2px solid #fff;
+    background-color:#fff;
+    background-repeat:no-repeat;
+    background-position:center center;
+    position:relative;
+    overflow:hidden;
+    cursor:pointer;
+    -moz-box-shadow:1px 3px 15px #555;
+    -webkit-box-shadow:1px 3px 15px #555;
+    box-shadow:1px 3px 15px #555;
+
+}
+
+ul.accordion li div{
+    position:absolute;
+    bottom:0px;
+    left:0px;
+    display:none;
+}
+.desc_heading{
+    background: none;
+    padding: 0;
+    height: auto;
+    position: static;
+    opacity: 1;
+    text-transform:uppercase;
+    font-style:normal;
+    font-weight:bold;
+    letter-spacing:1px;
+  
+    text-align:left;
+    margin:0px 0px 15px 20px;
+    text-shadow:-1px -1px 1px #ccc;
+}
+.desc{
+    line-height:14px;
+    margin:10px 22px;
+ 
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: normal;
+    line-height: 1.6em;
+}
+ul.accordion li div a{
+	display: block;
+    margin: 5px 0 5px 20px;
+    text-transform:uppercase;
+    font-style:normal;
+  
+}
+ul.accordion li div a:hover{
+    color:#333;
+    text-decoration:underline;
+}

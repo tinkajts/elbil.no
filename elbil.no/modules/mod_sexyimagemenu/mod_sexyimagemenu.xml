@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="3.0" client="site" method="upgrade">
+	<name>Sexy ImageMenu</name>
+	<author>Vijay Padsumbiya</author>
+	<creationDate>September 2010</creationDate>
+	<copyright>Copyright (C) pulseextensions.com</copyright>
+	<license>GNU/GPL</license>
+	<authorEmail>info@pulseinfotech.com</authorEmail>
+	<authorUrl>www.pulseextensions.com</authorUrl>
+	<version>2.3</version>
+	<description>SEXY IMAGEMENU BY PULSEEXTENSIONS TEAM</description>
+	<files>
+		<filename module="mod_sexyimagemenu">mod_sexyimagemenu.php</filename>
+        <filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+		<filename>js/jquery.min.js</filename>
+		<filename>js/index.html</filename>
+		<filename>css/style.css</filename>
+		<filename>css/index.html</filename>
+		<filename>images/bgDescription.png</filename>
+ 		<filename>images/img1.jpg</filename>
+		<filename>images/img2.jpg</filename>
+		<filename>images/img3.jpg</filename>
+		<filename>images/img4.jpg</filename>
+		<filename>images/img5.jpg</filename>
+		</files>
+
+	
+
+<config>
+	<fields name="params">
+	<fieldset name="basic">
+
+	<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#333333;&quot;&gt;JQUERY SETTINGS&lt;/div&gt;" />
+
+<field name="jquery_load" type="list" default="1" label="JQUERY LOADING" description="Jquery Load or not">
+<option value="1">Yes</option>
+<option value="2">No</option>
+</field>
+
+<field name="conflict_load" type="list" default="1" label="JQUERY CONFLICT CODE" description="Jquery Conflict Code">
+<option value="1">Yes</option>
+<option value="2">No</option>
+</field>
+	
+	<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#333333;&quot;&gt;GENERAL SETTINGS&lt;/div&gt;" />
+	
+	<field name="menu_width" type="text" default="99%" label="MENU WIDTH" description="Total Menu Width" />
+	<field name="menu_height" type="text" default="330px" label="MENU HEIGHT" description="Total Menu HEIGHT" /> 
+	<field name="left_margin" type="text" default="12px" label="LEFT MARGIN" description="LEFT MARGIN" /> 
+	<field name="top_margin" type="text" default="-2px" label="TOP MARGIN" description="TOP MARGIN" /> 
+	<field name="bottom_margin" type="text" default="2px" label="BOTTOM MARGIN" description="BOTTOM MARGIN" /> 
+	
+	<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#333333;&quot;&gt;SLIDE SETTINGS&lt;/div&gt;" />
+	
+	<field name="single_menu_expand_width" type="text" default="550px" label="SLIDE EXPAND WIDTH" description="Single Slide Expand Width" /> 
+	<field name="accordin_background" type="text" default="bgDescription.png" label="ACCRODIN BACKGROUND" description="Accordin Background" /> 
+	<field name="accordin_height" type="text" default="250px" label="ACCORDIN HEIGHT" description="Accordin Height" /> 
+	
+	<field name="image_number" type="list" default="5" label="NUMBER OF SLIDE" description="How Much Image You want">
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+			<option value="6">6</option>
+			<option value="7">7</option>
+			<option value="8">8</option>
+		</field>
+	
+	<field name="auto_play" type="list" default="true" label="AUTO PLAY FUNCTION" description="You want auto play or not">
+		<option value="true">YES</option>
+		<option value="false">No</option>
+		</field>
+	<field name="delay_autoplay" type="text" default="3000" label="DELAY BETWEEN SLIDE" description="How much Delay you want on autoplay" />
+	<field name="sliding_speed" type="text" default="600" label="SLIDING SPEED" description="Sliding Speed" />
+	
+	<field name="link_text" type="text" default="MORE" label="LINK TEXT" description="Link Text" />
+	
+	<field name="link_open_window" type="list" default="0" label="LINK OPEN TYPE" description="Want to link Open in new window or not">
+		<option value="0">Open In Same Window</option>
+		<option value="1">Open In New Window</option>
+		</field>
+	
+
+<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#333333;&quot;&gt;IMAGE DESTINATION&lt;/div&gt;" />
+
+	<field name="media_option" type="radio" default="0" label="IMAGE DESTINATION" description="Read Document">
+			<option value="0">Default</option>
+			<option value="1">Media Manager</option>
+		</field>
+	
+	<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#333333;&quot;&gt;SLIDE STYLE SETTINGS&lt;/div&gt;" />
+		
+	<field name="font_family" type="text" default="Century Gothic" label="FONT FAMILY" description="Font Family For Module" />
+	<field name="main_title_size" type="text" default="14px" label="MAIN TITLE FONT SIZE" description="Main Title Font Size" />
+	<field name="main_title_color" type="text" default="#444" label="MAIN TITLE FONT COLOR" description="Main Title Font Color" />
+	<field name="main_title_backcolor" type="text" default="#fff" label="MAIN TITLE BACK COLOR" description="Main Title Font Background Color" />
+	
+	<field name="sub_title_size" type="text" default="20px" label="SUB TITLE FONT SIZE" description="Sub Title Font Size" />
+	<field name="sub_title_color" type="text" default="#444" label="SUB TITLE FONT COLOR" description="Sub Title Font Color" />
+	
+	<field name="sub_desc_size" type="text" default="12px" label="SUB DESC FONT SIZE" description="Sub Desc Font Size" />
+	<field name="sub_desc_color" type="text" default="#444" label="SUB DESC FONT COLOR" description="Sub Desc Font Color" />
+	
+	<field name="sub_link_size" type="text" default="11px" label="SUB LINK SIZE" description="Sub Link Font Size" />
+	<field name="sub_link_color" type="text" default="#888" label="SUB LINK COLOR" description="Sub Link Font Color" />
+	
+		<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#333333;&quot;&gt;EACH SLIDE SETTINGS&lt;/div&gt;" />
+	<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#0412B5;&quot;&gt;FIRST SLIDE SETTINGS&lt;/div&gt;" />	
+		<field name="image_1" type="text" default="img1.jpg" label="FIRST MENU IMAGE" description="First Image" /> 
+		<field name="link_1_title" type="text" default="Guler" label="MENU TITLE" description="Menu Title" /> 	
+		<field name="link_1_desc" type="text" default="Lorem ipsum dolor sit amet, consectetur adipisicing elit" label="MENU DESCRPTION" description="Menu Title" /> 	
+		<field name="link_1" type="text" default="http://www.msn.com" label="LINK TO READ MORE" description="Enter Link For First Menu" /> 				
+	
+		
+		<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#0412B5;&quot;&gt;SECOND SLIDE SETTINGS&lt;/div&gt;" />
+		
+		<field name="image_2" type="text" default="img2.jpg" label="SECOND MENU IMAGE" description="Second Image" /> 
+		<field name="link_2_title" type="text" default="Phillips" label="MENU TITLE" description="Menu Title" /> 	
+		<field name="link_2_desc" type="text" default="Sed ut perspiciatis unde omnis iste natus error sit voluptatem" label="MENU DESCRPTION" description="Menu Title" /> 	
+		<field name="link_2" type="text" default="http://www.google.com" label="LINK TO READ MORE" description="Enter Link For Menu" /> 		
+	
+		
+			<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#0412B5;&quot;&gt;THIRD SLIDE SETTINGS&lt;/div&gt;" />
+		
+		<field name="image_3" type="text" default="img3.jpg" label="THIRD MENU IMAGE" description="Third Image" /> 
+		<field name="link_3_title" type="text" default="Diamanti" label="MENU TITLE" description="Menu Title" /> 	
+		<field name="link_3_desc" type="text" default="Lorem ipsum dolor sit amet, consectetur adipisicing elit" label="MENU DESCRPTION" description="Menu Title" /> 	
+		<field name="link_3" type="text" default="http://www.msn.com" label="LINK TO READ MORE" description="Enter Link For Menu" /> 				
+	
+		<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#0412B5;&quot;&gt;FOURTH SLIDE SETTINGS&lt;/div&gt;" />
+		
+		<field name="image_4" type="text" default="img4.jpg" label="FOURTH MENU IMAGE" description="Fourth Image" /> 
+		<field name="link_4_title" type="text" default="Meiklejohn" label="MENU TITLE" description="Menu Title" /> 	
+		<field name="link_4_desc" type="text" default="Sed ut perspiciatis unde omnis iste natus error sit voluptatem" label="MENU DESCRPTION" description="Menu Title" /> 	
+		<field name="link_4" type="text" default="http://www.google.com" label="LINK TO READ MORE" description="Enter Link For Menu" /> 			
+			
+			<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#0412B5;&quot;&gt;FIFTH SLIDE SETTINGS&lt;/div&gt;" />
+	
+		<field name="image_5" type="text" default="img5.jpg" label="FIFTH MENU IMAGE" description="Fifth Image" /> 
+		<field name="link_5_title" type="text" default="Phillips" label="MENU TITLE" description="Menu Title" /> 	
+		<field name="link_5_desc" type="text" default="Lorem ipsum dolor sit amet, consectetur adipisicing elit" label="MENU DESCRPTION" description="Menu Title" /> 	
+		<field name="link_5" type="text" default="http://www.msn.com" label="LINK TO READ MORE" description="Enter Link For Menu" /> 		
+		
+		<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#0412B5;&quot;&gt;SIXTH SLIDE SETTINGS&lt;/div&gt;" />
+	
+		<field name="image_6" type="text" default="img2.jpg" label="SIXTH MENU IMAGE" description="Sixth Image" /> 
+		<field name="link_6_title" type="text" default="Phillips" label="MENU TITLE" description="Menu Title" /> 	
+		<field name="link_6_desc" type="text" default="Lorem ipsum dolor sit amet, consectetur adipisicing elit" label="MENU DESCRPTION" description="Menu Title" /> 	
+		<field name="link_6" type="text" default="http://www.msn.com" label="LINK TO READ MORE" description="Enter Link For Menu" /> 		
+		
+		<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#0412B5;&quot;&gt;SEVENTH SLIDE SETTINGS&lt;/div&gt;" />
+	
+		<field name="image_7" type="text" default="img3.jpg" label="SEVENTH MENU IMAGE" description="Seventh Image" /> 
+		<field name="link_7_title" type="text" default="Phillips" label="MENU TITLE" description="Menu Title" /> 	
+		<field name="link_7_desc" type="text" default="Lorem ipsum dolor sit amet, consectetur adipisicing elit" label="MENU DESCRPTION" description="Menu Title" /> 	
+		<field name="link_7" type="text" default="http://www.msn.com" label="LINK TO READ MORE" description="Enter Link For Menu" /> 	
+		
+		<field type="spacer" label="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold;font-family:calibri; padding:5px; margin:0; background:#0412B5;&quot;&gt;EIGHT SLIDE SETTINGS&lt;/div&gt;" />	
+		
+		<field name="image_8" type="text" default="img3.jpg" label="EIGHTH MENU IMAGE" description="Eighth Image" /> 
+		<field name="link_8_title" type="text" default="Phillips" label="MENU TITLE" description="Menu Title" /> 	
+		<field name="link_8_desc" type="text" default="Lorem ipsum dolor sit amet, consectetur adipisicing elit" label="MENU DESCRPTION" description="Menu Title" /> 	
+		<field name="link_8" type="text" default="http://www.msn.com" label="LINK TO READ MORE" description="Enter Link For Menu" /> 	
+			
+</fieldset>
+</fields>
+	
+</config>
+</extension>

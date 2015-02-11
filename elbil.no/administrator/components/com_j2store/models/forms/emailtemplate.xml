@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field name="emailtemplate_id" type="hidden" default="0"
+			label="J2STORE_EMAILTEMPLATE_ID_LABEL" readonly="true" size="10" />
+	
+		<field
+			name="language"
+			type="contentlanguage"
+			label="JFIELD_LANGUAGE_LABEL"
+			description="J2STORE_EMAILTEMPLATE_LANGUAGE_DESC"
+			class="">
+			<option value="*">JALL</option>
+		</field>
+
+		<field name="subject" type="text" description="J2STORE_EMAILTEMPLATE_SUBJECT_DESC"
+			label="J2STORE_EMAILTEMPLATE_SUBJECT_LABEL" required="true" class="long" size="50" />
+			
+		<field name="body" description="J2STORE_EMAILTEMPLATE_BODY_DESC"
+			label="J2STORE_EMAILTEMPLATE_BODY_LABEL" type="editor" width="800" height="500" filter="safehtml" required="true"  />
+
+		<field name="state" type="list" description="J2STORE_STATUS_DESC"
+			label="J2STORE_STATUS_LABEL" required="true" size="1" default="1">
+			<option value="1"> JPUBLISHED</option>
+			<option value="0"> JUNPUBLISHED</option>
+		</field>
+
+	</fieldset>
+
+</form>

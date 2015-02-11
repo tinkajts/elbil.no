@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="component" version="2.5.0" method="upgrade">
+	<name>COM_REGWEB</name>
+	<creationDate>October 2013</creationDate>
+	<author>Regweb</author>
+	<authorEmail>post@regweb.no</authorEmail>
+	<authorUrl>http://www.regweb.no</authorUrl>
+	<copyright>(c) Regweb. All rights reserved.</copyright>
+	<license>Apache 2.0</license>
+	<version>0.0.1</version>
+	<description>COM_REGWEB_DESC</description>
+	
+	<files folder="site">
+		<filename>regweb.php</filename>
+		<filename>controller.php</filename>
+		<filename>index.html</filename>
+		<folder>views</folder>
+		<folder>controllers</folder>
+		<folder>models</folder>
+	</files>
+	
+	<languages folder="site/language">
+		<language tag="en-GB">en-GB/en-GB.com_regweb.ini</language>
+		<language tag="nb-NO">nb-NO/nb-NO.com_regweb.ini</language>
+	</languages>
+	
+	<administration>
+	
+		<menu>COM_REGWEB</menu>
+		
+		<files folder="admin">
+			<filename>regweb.php</filename>
+			<filename>controller.php</filename>
+			<filename>config.xml</filename>
+			<filename>metadata.xml</filename>
+			<filename>index.html</filename>
+			<folder>controllers</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+		</files>
+		
+		<languages folder="admin/language">
+			<language tag="en-GB">en-GB/en-GB.com_regweb.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_regweb.sys.ini</language>
+			<language tag="nb-NO">nb-NO/nb-NO.com_regweb.ini</language>
+			<language tag="nb-NO">nb-NO/nb-NO.com_regweb.sys.ini</language>
+		</languages>
+		
+	</administration>
+	
+</extension>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="module" client="site" version="2.5.0" method="upgrade">
+    <name>MOD_REGWEB_USERBOX</name>
+    <creationDate>October 2013</creationDate>
+    <author>Regweb</author>
+    <authorEmail>post@regweb.no</authorEmail>
+    <authorUrl>http://www.regweb.no</authorUrl>
+    <copyright>(c) Regweb. All rights reserved.</copyright>
+    <license>Apache 2.0</license>
+    <version>0.0.1</version>
+    <description>MOD_REGWEB_USERBOX_XML_DESCRIPTION</description>
+
+    <files>
+        <filename>mod_regweb_userbox.xml</filename>
+        <filename module="mod_regweb_userbox">mod_regweb_userbox.php</filename>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <folder>tmpl</folder>
+    </files>
+
+    <languages folder="language">
+        <language tag="en-GB">en-GB/en-GB.mod_regweb_userbox.ini</language>
+        <language tag="en-GB">en-GB/en-GB.mod_regweb_userbox.sys.ini</language>
+
+        <language tag="nb-NO">nb-NO/nb-NO.mod_regweb_userbox.ini</language>
+        <language tag="nb-NO">nb-NO/nb-NO.mod_regweb_userbox.sys.ini</language>
+    </languages>
+
+</extension>

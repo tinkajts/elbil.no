@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="module" version="1.7" client="site" method="upgrade">
+	<name>Custom Twitter Display</name>
+	<author>Carly Nunez</author>
+	<creationDate>18-July-2012</creationDate>
+	<copyright>Copyright (C) 2005 - 2012 Open Source Matters. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>techsupport@lawyer-poet.com</authorEmail>
+	<authorUrl>www.lawyer-poet.com</authorUrl>
+	<version>1.0</version>
+	<description>
+		<![CDATA[
+		 Custom Twitter Display
+		<br/>
+		<p>
+		]]>
+	</description>
+	<files>
+		<filename module="mod_CustomTwitterDisplay">mod_CustomTwitterDisplay.php</filename>
+		<filename>index.html</filename>
+        <filename>helper.php</filename>
+        <filename>tmpl/default.php</filename>
+        <filename>tmpl/index.html</filename>
+		<folder>js</folder>
+		<folder>elements</folder>
+		<folder>css</folder>
+		<folder>images</folder>
+	</files>
+		<config>
+		<fields name="params" addfieldpath="/modules/mod_CustomTwitterDisplay/elements">
+			<fieldset name="basic">
+	<field type="spacer" name="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold; padding:3px; margin:0; text-align:center; background:#333333;&quot;&gt;Settings&lt;/div&gt;" />
+	<field name="moduleclass_sfx" type="text" default="" label="Class:" description="specify class to apply" />
+				<field name="widget_type" type="list" default="profile" label="Widget Type" description="">
+					<option value="profile">Individual Profile</option>
+					<option value="search">Search</option>
+		</field>
+		<field type="spacer" name="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold; padding:3px; margin:0; text-align:center; background:#333333;&quot;&gt;Settings For Individual Profile&lt;/div&gt;" />
+		<field name="username" type="text" default="twitter" label="User name" description="Your Twitter username!" />
+			<field name="display_with" type="list" default="javascript" label="Module Type" description="">
+			<option value="html">Html</option>
+			<option value="javascript">Javascript</option>
+		</field>
+		
+		
+		
+				
+				
+	<field type="spacer" name="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold; padding:3px; margin:0; text-align:center; background:#333333;&quot;&gt;Dimensions&lt;/div&gt;" />
+
+		<field name="width" type="text" default="200" label="Width" description="" />
+		<field name="height" type="text" default="350" label="Height" description="" />
+						<field name="autowidth" type="list" default="no" label="Auto width" description="">
+			<option value="yes">YES</option>
+			<option value="no">NO</option>
+		</field>
+
+
+			<field type="spacer" name="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold; padding:3px; margin:0; text-align:center; background:#333333;&quot;&gt;Appearance&lt;/div&gt;" />
+
+			<field name="shell_background" type="colorpicker" default="#333333" label="Shell Background" description="" />
+		<field name="shell_color" type="colorpicker" default="#ffffff" label="Shell text Color" description="" />
+		<field name="tweet_background" type="colorpicker" default="#000000" label="Tweet Background" description="" />
+		<field name="tweet_color" type="colorpicker" default="#ffffff" label="Tweet color" description="" />
+		<field name="links_color" type="colorpicker" default="#4aed05" label="Link color" description="" />
+		<field type="spacer" name="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold; padding:3px; margin:0; text-align:center; background:#333333;&quot;&gt;Preferences&lt;/div&gt;" />
+
+		<field name="live" type="list" default="no" label="Live Results?" description="">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</field>
+
+				<field name="scrollbar" type="list" default="no" label="Scrollbar" description="">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</field>
+
+					<field type="spacer" name="&lt;div style=&quot;color:#444; background:#ccc; height:12px; font-size:11px; font-weight:bold; padding:3px; margin:0; text-align:center;&quot;&gt;Number of Tweets&lt;/div&gt;" />
+
+				<field name="rpp" type="text" default="5" label="Number of Tweets" description="" />
+
+		<field name="hashtags" type="list" default="yes" label="Hashtags" description="">
+
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</field>
+
+
+				<field name="timestamp" type="list" default="yes" label="Timestamp" description="">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</field>
+		<field name="avatars" type="list" default="no" label="Show Avatars" description="">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</field>
+
+			<field type="spacer" name="&lt;div style=&quot;color:#444; background:#ccc; height:12px; font-size:11px; font-weight:bold; padding:3px; margin:0; text-align:center;&quot;&gt;Interval&lt;/div&gt;" />
+				<field name="interval" type="text" default="2" label="Tweet Interval?" description="" />
+
+	
+		<field name="loop" type="list" default="no" label="Loop Results?" description="The results will be looped again and again">
+			<option value="yes">Yes</option>
+			<option value="no">No</option>
+		</field>
+
+				
+				<field type="spacer" name="&lt;div style=&quot;color:#fff; font-size:12px; font-weight:bold; padding:3px; margin:0; text-align:center; background:#333333;&quot;&gt;Settings For Search Widget Only&lt;/div&gt;" />
+					<field name="search_query" type="text" label="Search Query" default="rainbow" description="term to search for" />
+
+			<field name="search_title" type="text" label="Search Title" default="It's a double rainbow" description="Enter the title for your seach" />
+				
+				<field name="search_subject" type="text" label="Search Subject" default="Across the sky" description="Enter the subject for your search" />
+				
+				<field name="toptweets" type="radio" label="Top Tweets?" description="If you enable this, it loops the results again and again." default="no">
+					<option value="yes">Yes</option>
+					<option value="no">No</option>
+				</field>	
+	</fieldset>
+		</fields>
+
+	</config>
+
+</extension>

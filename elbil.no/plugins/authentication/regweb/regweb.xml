@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension type="plugin" group="authentication" version="2.5.0" method="upgrade">
+	<name>PLG_AUTH_REGWEB</name>
+	<creationDate>October 2013</creationDate>
+	<author>Regweb</author>
+	<authorEmail>post@regweb.no</authorEmail>
+	<authorUrl>http://www.regweb.no</authorUrl>
+	<copyright>(c) Regweb. All rights reserved.</copyright>
+	<license>Apache 2.0</license>
+	<version>0.0.1</version>
+	<description>PLG_AUTH_REGWEB_XML_DESCRIPTION</description>
+	
+	<files folder="plugin">
+		<filename plugin="regweb">regweb.php</filename>
+		<filename>index.html</filename>
+	</files>
+	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_authentication_regweb.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_authentication_regweb.sys.ini</language>
+		<language tag="nb-NO">nb-NO/nb-NO.plg_authentication_regweb.ini</language>
+		<language tag="nb-NO">nb-NO/nb-NO.plg_authentication_regweb.sys.ini</language>
+	</languages>
+	
+	<config>
+		<fields name="params">
+			
+			<fieldset name="config_usergroup_fieldset" label="PLG_AUTH_REGWEB_CONFIG_USERGROUP">
+				<field 	name="config_usergroup"
+						type="usergroup"
+						label="PLG_AUTH_REGWEB_CONFIG_USERGROUP_LABEL"/>
+
+                <field 	name="login_redirect" type="text"
+                        default="index.php?option=com_regweb&amp;view=profile"
+                        label="PLG_AUTH_REGWEB_CONFIG_LOGIN_REDIRECT_LABEL"/>
+			</fieldset>
+
+            <!-- Login texts -->
+
+            <fieldset name="config_login_texts" label="PLG_AUTH_REGWEB_CONFIG_LOGIN_TEXTS">
+
+                <field 	name="login_failed_text" type="editor"
+                          filter="safehtml"
+                          default="Innlogging feilet, vennligst pr&amp;oslash;v igjen."
+                          label="PLG_AUTH_REGWEB_CONFIG_LOGIN_TEXTS_FAILED_LABEL"/>
+
+                <field 	name="login_failed_no_email_text" type="editor"
+                          filter="safehtml"
+                          default="Innlogging feilet, det er ikke registrert noen epost p&amp;aring; denne kontoen. Kontakt oss."
+                          label="PLG_AUTH_REGWEB_CONFIG_LOGIN_TEXTS_FAILED_NO_EMAIL_LABEL"/>
+
+                <field 	name="login_failed_not_active_text" type="editor"
+                          filter="safehtml"
+                          default="Innlogging feilet, medlemmet er ikke aktivt."
+                          label="PLG_AUTH_REGWEB_CONFIG_LOGIN_TEXTS_FAILED_NOT_ACTIVE_LABEL"/>
+
+            </fieldset>
+
+            <fieldset name="config_login_form_texts" label="PLG_AUTH_REGWEB_CONFIG_LOGIN_FORM">
+                <field
+                        name="usesecure"
+                        type="radio"
+                        default="0"
+                        label="PLG_AUTH_REGWEB_CONFIG_LOGIN_FORM_USESECURE_LABEL"
+                        description="PLG_AUTH_REGWEB_CONFIG_LOGIN_FORM_USESECURE_DESC">
+                    <option value="0">JNo</option>
+                    <option value="1">JYes</option>
+                </field>
+                <field
+                        name="pretext"
+                        type="textarea"
+                        filter="safehtml"
+                        cols="120"
+                        rows="8"
+                        label="PLG_AUTH_REGWEB_CONFIG_LOGIN_FORM_PRE_TEXT_LABEL"
+                        description="PLG_AUTH_REGWEB_CONFIG_LOGIN_FORM_PRE_TEXT_DESC" />
+                <field
+                        name="posttext"
+                        type="textarea"
+                        filter="safehtml"
+                        cols="120"
+                        rows="8"
+                        label="PLG_AUTH_REGWEB_CONFIG_LOGIN_FORM_POST_TEXT_LABEL"
+                        description="PLG_AUTH_REGWEB_CONFIG_LOGIN_FORM_POST_TEXT_DESC" />
+
+                <field
+                        name="forgotpasstext"
+                        type="textarea"
+                        filter="safehtml"
+                        default="Hvis du har glemt passordet ditt, eller ikke har fått det ennå, skriv inn enten medlemsnummer eller registrert e-postadresse i feltet under."
+                        cols="120"
+                        rows="8"
+                        label="PLG_AUTH_REGWEB_CONFIG_FORGOTPASS_FORM_TEXT_LABEL"
+                        description="PLG_AUTH_REGWEB_CONFIG_FORGOTPASS_FORM_TEXT_DESC" />
+
+                <field
+                        name="forgotpassconfirmtext"
+                        type="textarea"
+                        filter="safehtml"
+                        default="Du vil motta videre instruksjoner til din registrerte epost."
+                        cols="120"
+                        rows="8"
+                        label="PLG_AUTH_REGWEB_CONFIG_FORGOTPASS_CONFIRM_TEXT_LABEL"
+                        description="PLG_AUTH_REGWEB_CONFIG_FORGOTPASS_CONFIRM_TEXT_DESC" />
+            </fieldset>
+
+		</fields>
+	</config>
+	
+</extension>

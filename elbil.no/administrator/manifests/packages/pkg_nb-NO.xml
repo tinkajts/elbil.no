@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- $Id: pkg_nb-NO.xml 141 2013-05-13 09:10:37Z rued $ -->
+<extension type="package" version="3.2">
+  <name>Norwegian Bokmål Language Pack</name>
+  <packagename>nb-NO</packagename>
+  <version>3.2.2.1</version>
+  <creationDate>2014-02-10</creationDate>
+  <author>Norsk Joomla!</author>
+  <authorEmail>oversettelser@norskjoomla.no</authorEmail>
+  <authorUrl>http://www.norskjoomla.no</authorUrl>
+  <description>
+    <![CDATA[
+      <div style="text-align:left;">
+      <h2>Norsk bokmål for Joomla ble installert.</h2>
+      <p>Du kan endre innstillinger for tekstbehandleren TinyMCE gjennom følgende steg:</p>
+      <p></p>
+      <ol>
+      <li>Utvidelser</li>
+      <li>Programtillegg</li>
+      <li><a href="index.php?option=com_plugins&view=plugins&filter_search=TinyMCE">TinyMCE</a></li>
+      <li>Parametre - Programtillegg</li>
+      <li>Funksjonalitet :: Utvidet (Valgfritt! Om du vil aktivere alle funksjoner i TinyMCE)</li>
+      </ol>
+      <p></p>
+      <p>Vær grei å melde eventuelle feil eller problemer med oversettelsene i det <a href="http://forum.joomla.org/viewforum.php?f=210" target="_blank" title="Det offisielle norske brukerforumet for Joomla-oversettelser">Norske Joomla!-forumet</a>, eller i <a href="http://joomlacode.org/gf/project/norwegiancore/tracker/" target="_blank" title="Tracker på JoomlaCode">Tracker på JoomlaCode</a>. Dersom du har forbedringsforslag hører vi gjerne om dette også.</p>
+      </div>
+    ]]>
+  </description>
+  <files>
+    <file type="language" client="site" id="nb-NO">site_nb-NO.zip</file>
+    <file type="language" client="administrator" id="nb-NO">admin_nb-NO.zip</file>
+  </files>
+  <updateservers>
+    <server type="collection" priority="1" name="Accredited Joomla! Translations">http://update.joomla.org/language/translationlist_3.xml</server>
+  </updateservers>
+</extension>

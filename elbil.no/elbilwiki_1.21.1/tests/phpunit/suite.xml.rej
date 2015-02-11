@@ -1,0 +1,10 @@
+--- tests/phpunit/suite.xml	2013-09-03 11:56:56.868921018 -0700
++++ tests/phpunit/suite.xml	2013-09-03 11:56:40.467921178 -0700
+@@ -29,6 +29,7 @@
+ 			<directory>maintenance</directory>
+ 		</testsuite>
+ 		<testsuite name="structure">
++			<file>AutoLoaderTest.php</file>
+ 			<file>StructureTest.php</file>
+ 		</testsuite>
+ 		<testsuite name="uploadfromurl">

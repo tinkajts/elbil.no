@@ -1,0 +1,2 @@
+RedirectMatch 301 forum/(.*) http://parat24.com/forum/$1 
+RedirectMatch 301 dokumenter/(.*) http://parat24.com/dokumenter/$1 

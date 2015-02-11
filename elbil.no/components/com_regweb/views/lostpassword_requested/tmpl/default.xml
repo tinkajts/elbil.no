@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<metadata>
+	<layout title="COM_REGWEB_VIEW_LOSTPASS_REQUESTED_TITLE">
+		<message>
+			<![CDATA[COM_REGWEB_VIEW_LOSTPASS_REQUESTED_DESC]]>
+		</message>
+	</layout>
+</metadata>

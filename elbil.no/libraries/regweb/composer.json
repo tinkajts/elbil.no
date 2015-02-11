@@ -1,0 +1,15 @@
+{
+	"require": {
+		"regweb/regweb-api-php": "dev-master"
+	},
+	"repositories": [
+		{
+			"type": "vcs",
+			"url": "https://github.com/regweb/regweb-api-php"
+		}
+	],
+	"autoload": {
+		"psr-0": {"JoomlaRegweb\\": "src/"}
+	},
+	"minimum-stability": "dev"
+}

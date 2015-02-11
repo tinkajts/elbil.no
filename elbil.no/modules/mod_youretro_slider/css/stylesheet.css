@@ -1,0 +1,177 @@
+/**
+* @package YJ Module Engine
+* @author Youjoomla.com
+* @website Youjoomla.com * @copyright  Copyright (c) 2007 - 2011 Youjoomla.com.
+* @license   PHP files are GNU/GPL V2 Copyleft CSS / JS / IMAGES are Copyrighted Commercial
+*/
+/* news item holder*/
+div.youretro_cont_border {
+	display:block;
+	overflow:hidden;
+	margin:0 auto;
+	background-color:#fff;
+	border:1px solid #dce0e5;
+	/*padding:5px;*/
+	width: 100% !important;
+}
+.Youretro_container {
+	display:block;
+	position:relative;
+	margin:0px auto 0px;
+	overflow:hidden;
+	width: 100% !important;	
+}
+/* navigator styling */
+.Youretro_container .navigator_outer {
+	display:block;
+	position:absolute;
+	right:0px; /* left */
+	top:0px;
+	z-index:100;
+	overflow:hidden;
+	width: 30% !important;	
+}
+.Youretro_container .navigator {
+	display:block;
+	position:relative;
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+/* default navigator element */
+.Youretro_container .navigator li.element {
+	display:block;
+	position:relative;
+	clear:none;
+	float:left;
+	margin:0px 0 0 0;
+	padding:0px;
+	cursor:pointer;
+	background:none;
+	width: 49% !important;
+	
+}
+/* default instance inner navigator element styling */
+.Youretro_container .navigator li.element div.inner {
+	display:block;
+	position:relative;
+	clear:both;
+	margin-left:auto; /* nista */
+	overflow:hidden;
+	width: 100% !important;
+	
+}
+.Youretro_container .navigator li.element div.inner_over {
+	display:block;
+	position:relative;
+	clear:both;
+	overflow:hidden;
+	width: 100% !important;
+	
+}
+.Youretro_container .img_holder {
+	display:block;
+	overflow:hidden;
+	text-align:center;
+	position:relative;
+	margin:0 auto;
+	width: 100% !important;
+	
+}
+.Youretro_container .retroimg {
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:1;
+}
+.Youretro_container .navigator li.element div.inner_over .overimg {
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	display:block;
+	z-index:100;
+	background: url(../images/inner_over.png) no-repeat left bottom;
+}
+/* selected navigator element */
+.Youretro_container .navigator li.selected div.inner_over .overimg {
+	background: url(../images/overimg.png) no-repeat left bottom;
+	position:absolute;
+	top:0;
+	left:0;
+	display:block;
+}
+/* end of navigation styling, starting slides */
+.Youretro_container .slideshold {
+	display:block;
+	position:relative;
+	margin-right:auto;
+	overflow:hidden;
+	background:#202020 url(../images/loader.gif) no-repeat center center;
+	width: 70% !important;
+}
+.Youretro_container .slideshold div.slide {
+	display:block;
+	position:relative;
+	overflow:hidden;
+}
+.Youretro_container div.slide div.long_desc {
+	display:block;
+	position:absolute;
+	font-size:11px;
+	color:#FFFFFF;
+	padding:10px 20px;
+	text-align:justify;
+	z-index:80;
+	background:url(../images/desc_bg.png);
+}
+.Youretro_container .yr_into_title {
+	font-size:18px;
+	line-height:18px;
+	margin:0 0 10px 0;
+	background:none;
+	border:none;
+	letter-spacing:normal;
+	color:#FFFFFF;
+}
+.Youretro_container .youretro_readon,
+.Youretro_container .youretro_readon:visited {
+	float:right;
+	text-transform:uppercase;
+}
+/* links color*/
+.youretro_cont_border a:link,
+.youretro_cont_border a:visited {
+	color:#fff;
+}
+.youretro_cont_border a:hover,
+.youretro_cont_border a:focus {
+	color:#ccc;
+}
+/* LEFT NAVIGATION*/
+.Youretro_container.left .navigator_outer {
+	display:block;
+	position:absolute;
+	left:0px; /* left */
+	right:auto;
+	top:0px;
+	z-index:100;
+	overflow:hidden;
+}
+.Youretro_container.left .slideshold {
+	float:right;
+}
+.Youretro_container.left .navigator li.selected div.inner_over .overimg,
+.Youretro_container.left .navigator li.element div.inner_over .overimg {
+	background-position:right bottom;
+}
+.Youretro_container.left .navigator li.element {
+	float:right;
+}
+/* reset module divs*/
+.yjmeyouretro .yjsquare_in,
+.yjmeyouretro .module,
+.yjmeyouretro .module_table {
+	padding:0;
+	margin:0;
+}
