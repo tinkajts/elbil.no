@@ -27,10 +27,10 @@ class JConfig {
 	public $fromname = 'Norsk elbilforening';
 	public $ftp_enable = '0';
 	public $ftp_host = '';
-	public $ftp_pass = '';
+	public $ftp_pass = 'J5cyep!trekt55';
 	public $ftp_port = '21';
 	public $ftp_root = '';
-	public $ftp_user = '';
+	public $ftp_user = 'webservices@skaaland.com';
 	public $gzip = '1';
 	public $helpurl = 'http://help.joomla.org/proxy/index.php?option=com_help&keyref=Help{major}{minor}:{keyref}';
 	public $host = 'localhost';
@@ -49,9 +49,9 @@ class JConfig {
 	public $offline_message = 'Dette nettstedet er nede for vedlikehold.<br /> Velkommen tilbake litt senere.';
 	public $offset = 'Europe/Oslo';
 	public $offset_user = 'UTC';
-	public $password = '';
+	public $password = 'zLgU!6UY';
 	public $robots = '';
-	public $secret = '';
+	public $secret = 'zIQrWTWYGJ4ShYR45UDghTgrzieA5N5Z';
 	public $sef = '1';
 	public $sef_rewrite = '1';
 	public $sef_suffix = '0';

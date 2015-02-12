@@ -1,4 +1,4 @@
-<?php die("Access Denied"); ?>#x#a:5:{s:4:"body";s:14638:"<div class="blog-featured">
+<?php die("Access Denied"); ?>#x#a:5:{s:4:"body";s:14652:"<div class="blog-featured">
 
 	
 	
@@ -10,7 +10,7 @@
 		<a href="/nyheter/debatt/3472-innfor-leasingfritak-na">
 			<img
 								src="images/aa-nyheter/W-2014-Q4/blogg-20141106-elbiler_800.jpg" alt="Utvalg av elbiler"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -50,7 +50,7 @@
 		<a href="/nyheter/debatt/3471-elbilene-viktigere-enn-regnskogsatsingen">
 			<img
 								src="images/aa-nyheter/V-2015-Q1/blogg-20150206-christina_800.jpg" alt="Generalsekretær Christina Bu"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -95,7 +95,7 @@
 		<a href="/nyheter/ladestasjoner/3470-finn-naermeste-ladestasjon">
 			<img
 								src="images/aa-nyheter/V-2015-Q1/blogg-20150205-ladestasjoner.jpg" alt="Ladekart"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -135,7 +135,7 @@
 		<a href="/nyheter/elbiler/3469-nesten-halvparten-var-e-golf">
 			<img
 								src="images/aa-nyheter/X-2014-Q3/blogg-20140911-golf2_800.jpg" alt="Volkswagen e-Golf"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -180,7 +180,7 @@
 		<a href="/nyheter/elbilisme/3468-atte-elbiler-pa-forste-tur-til-danmark">
 			<img
 								src="images/aa-nyheter/V-2015-Q1/blogg-20150202-graceland_800.jpg" alt="Elbiler på Graceland"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -220,7 +220,7 @@
 		<a href="/nyheter/ladestasjoner/3467-her-kan-du-kjope-ny-ladekabel">
 			<img
 								src="images/aa-nyheter/X-2014-Q3/blogg-20140910-ladekabel_800.jpg" alt="Type 2 ladekabel"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -265,7 +265,7 @@
 		<a href="/nyheter/debatt/3466-elbiler-vil-gjore-dieselforbud-unodvendig">
 			<img
 								src="images/aa-nyheter/V-2015-Q1/blogg-20150129-bu_800.jpg" alt="Generalsekretær Christina Bu"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -305,7 +305,7 @@
 		<a href="/nyheter/elbilisme/3465-stians-reva-har-fatt-nytt-hjerte">
 			<img
 								src="images/aa-nyheter/V-2015-Q1/blogg-20150127-reva_800.jpg" alt="Batteriskift Reva"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -350,7 +350,7 @@
 		<a href="/nyheter/elbilisme/3464-bli-med-pa-elbiltur-til-danmark">
 			<img
 								src="images/aa-nyheter/V-2015-Q1/blogg-20150126-stavangerfjord_800.jpg" alt="MV Stavangerfjord"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -390,7 +390,7 @@
 		<a href="/nyheter/elbilisme/3463-om-elbilister-og-folk-i-elbil">
 			<img
 								src="images/aa-nyheter/Y-2014-Q2/blogg-20140514_ladeplass_800.jpg" alt="Lading av elbil"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -435,7 +435,7 @@
 		<a href="/nyheter/elbilisme/3462-er-dette-landets-mest-offensive-elbilbedrift">
 			<img
 								src="images/aa-nyheter/V-2015-Q1/blogg-20150122-tess_eltonhaug_800.jpg" alt="TESS´ Tomas Elton Haug"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -475,7 +475,7 @@
 		<a href="/nyheter/debatt/3461-ta-vare-pa-den-norske-elbilhistorien">
 			<img
 								src="images/aa-nyheter/V-2015-Q1/blogg-20150121-think_donor_800.jpg" alt="Think Classic"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -520,7 +520,7 @@
 		<a href="/nyheter/elbiler/3460-1-3-av-elbilene-i-europa-til-norge">
 			<img
 								src="images/aa-nyheter/X-2014-Q3/blogg-20140708-leaf_800.jpg" alt="Nissan LEAF"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
@@ -560,7 +560,7 @@
 		<a href="/nyheter/ladestasjoner/3459-bergen-apner-verdens-storste-ladestasjon">
 			<img
 								src="images/aa-nyheter/V-2015-Q1/blogg-20150119-bergen.jpg" alt="Hurtigladestasjon Bergen"/>
-		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
