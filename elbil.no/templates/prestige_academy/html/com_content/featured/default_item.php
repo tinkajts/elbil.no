@@ -28,7 +28,7 @@ $canEdit	= $this->item->params->get('access-edit');
 					echo 'class="caption"'.' title="' .htmlspecialchars($images->image_intro_caption) .'"';
 				endif; ?>
 				src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>"/>
-		<img src="/images/orangepilboks.png" class="gronnpil" width="30px" height="30px"/>
+		<img src="/images/gronnpilboks.png" class="gronnpil" width="30px" height="30px"/>
 		</a>
 		
 	</div>
