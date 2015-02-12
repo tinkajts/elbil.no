@@ -8,9 +8,9 @@ $LiveSiteUrl = "$s5_urlforSEO/";}
 
 /* template directory URL used index.php */
 $s5_template_name = $this->template;
-//$s5_directory_path = $LiveSiteUrl."templates/".$s5_template_name;
+$s5_directory_path = $LiveSiteUrl."templates/".$s5_template_name;
 
-$s5_directory_path = $LiveSiteUrl."templates/elbil_no";
+//$s5_directory_path = $LiveSiteUrl."templates/elbil_no";
 
 /* If browser calls */
 $br = strtolower($_SERVER['HTTP_USER_AGENT']);
