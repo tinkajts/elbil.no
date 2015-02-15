@@ -35,6 +35,7 @@ JHtml::addIncludePath(JPATH_COMPONENT.'/helpers');
 	<div class="category-desc">
 	<?php if ($this->params->get('show_description_image') && $this->category->getParams()->get('image')) : ?>
 		<img src="<?php echo $this->category->getParams()->get('image'); ?>"/>
+		<img src="/images/orangepilboks.png" class="gronnpil" width="42px" height="30px"/>
 	<?php endif; ?>
 	<?php if ($this->params->get('show_description') && $this->category->description) : ?>
 		<?php echo JHtml::_('content.prepare', $this->category->description, '', 'com_content.category'); ?>
