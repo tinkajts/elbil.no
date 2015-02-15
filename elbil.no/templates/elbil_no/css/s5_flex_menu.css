@@ -13,6 +13,7 @@
 
 #s5_menu_wrap ul.menu {
 padding:0px !important;
+font-weight: bold;
 }
 
 #s5_menu_wrap ul.menu a {

@@ -378,7 +378,7 @@ font-size:1.4em;*/
 }
 
 .item {
-/*line-height:140%;*/
+position: relative;
 }
 
 .img-intro-left, .img-intro-right {

@@ -36,6 +36,7 @@ if (!empty($this->item->pagination) AND $this->item->pagination && !$this->item-
 <?php $imgfloat = (empty($images->float_fulltext)) ? $params->get('float_fulltext') : $images->float_fulltext; ?>
 <div class="img-fulltext-<?php echo htmlspecialchars($imgfloat); ?>">
 <img <?php if ($images->image_fulltext_caption): echo 'class="caption"'.' title="' .htmlspecialchars($images->image_fulltext_caption) .'"';	endif; ?> src="<?php echo htmlspecialchars($images->image_fulltext); ?>" alt="<?php echo htmlspecialchars($images->image_fulltext_alt); ?>" />
+<img src="/images/orangepilboks.png" class="gronnpil" width="42px" height="30px"/>
 </div>
 <?php endif; ?>
  
